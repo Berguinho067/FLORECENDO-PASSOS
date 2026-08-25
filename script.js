@@ -1,13 +1,3 @@
-/* ==========================================
-   FLORECENDO PASSOS
-   JOGO 2D EDUCATIVO
-========================================== */
-
-
-/* ==========================================
-   ELEMENTOS
-========================================== */
-
 const menu = document.getElementById("menu");
 const instructions = document.getElementById("instructions");
 const gameScreen = document.getElementById("gameScreen");
@@ -51,10 +41,6 @@ const jumpControl = document.getElementById("jumpControl");
 const door = document.getElementById("door");
 
 
-/* ==========================================
-   CONFIGURAÇÃO DO MAPA
-========================================== */
-
 const WORLD_WIDTH = 3300;
 
 const GROUND_HEIGHT = 100;
@@ -72,9 +58,6 @@ const DOOR_X = 3180;
 const DOOR_WIDTH = 90;
 
 
-/* ==========================================
-   ÁREAS COM CHÃO
-========================================== */
 
 const groundAreas = [
 
@@ -106,9 +89,6 @@ const groundAreas = [
 ];
 
 
-/* ==========================================
-   ESTADO DO JOGO
-========================================== */
 
 let game = createInitialGame();
 
@@ -124,9 +104,6 @@ let animationFrame = null;
 let answerLocked = false;
 
 
-/* ==========================================
-   PERGUNTAS
-========================================== */
 
 const challenges = [
 
@@ -185,9 +162,6 @@ const challenges = [
 ];
 
 
-/* ==========================================
-   CRIAR ESTADO INICIAL
-========================================== */
 
 function createInitialGame() {
 
@@ -232,9 +206,6 @@ function createInitialGame() {
 }
 
 
-/* ==========================================
-   CHÃO
-========================================== */
 
 function hasGroundAt(x) {
 
@@ -268,9 +239,6 @@ function playerHasGround() {
 }
 
 
-/* ==========================================
-   TECLADO
-========================================== */
 
 document.addEventListener(
     "keydown",
@@ -336,9 +304,6 @@ document.addEventListener(
 );
 
 
-/* ==========================================
-   NAVEGAÇÃO
-========================================== */
 
 function showScreen(screen) {
 
@@ -356,10 +321,6 @@ function showScreen(screen) {
 
 }
 
-
-/* ==========================================
-   BOTÕES
-========================================== */
 
 instructionsButton.addEventListener(
     "click",
@@ -427,9 +388,6 @@ messageMenu.addEventListener(
 );
 
 
-/* ==========================================
-   INICIAR JOGO
-========================================== */
 
 function startGame() {
 
@@ -499,9 +457,6 @@ function startGame() {
 }
 
 
-/* ==========================================
-   PARAR JOGO
-========================================== */
 
 function stopGame() {
 
@@ -525,9 +480,6 @@ function stopGame() {
 }
 
 
-/* ==========================================
-   LOOP PRINCIPAL
-========================================== */
 
 function gameLoop(timestamp) {
 
@@ -570,9 +522,6 @@ function gameLoop(timestamp) {
 }
 
 
-/* ==========================================
-   MOVIMENTO DO JOGADOR
-========================================== */
 
 function updatePlayer(delta) {
 
@@ -616,10 +565,6 @@ function updatePlayer(delta) {
     }
 
 
-    /*
-       Gravidade.
-    */
-
     game.velocityY -=
         game.gravity * delta;
 
@@ -628,9 +573,6 @@ function updatePlayer(delta) {
         game.velocityY * delta;
 
 
-    /*
-       Verifica pouso no chão.
-    */
 
     if (
         game.velocityY <= 0 &&
@@ -661,10 +603,6 @@ function updatePlayer(delta) {
     }
 
 
-    /*
-       Caiu no vazio.
-    */
-
     if (
         game.y < -PLAYER_HEIGHT
     ) {
@@ -685,10 +623,6 @@ function updatePlayer(delta) {
 
 }
 
-
-/* ==========================================
-   PULO
-========================================== */
 
 function jump() {
 
@@ -716,9 +650,6 @@ function jump() {
 }
 
 
-/* ==========================================
-   CÂMERA
-========================================== */
 
 function updateCamera() {
 
@@ -767,18 +698,6 @@ function updateCamera() {
 }
 
 
-/* ==========================================
-   MOEDAS
-========================================== */
-
-/*
-   Esta versão usa colisão por
-   retângulos, em vez de comparar
-   apenas o centro do jogador.
-
-   Isso corrige o problema de moedas
-   que não eram coletadas corretamente.
-*/
 
 function checkCoins() {
 
@@ -802,10 +721,6 @@ function checkCoins() {
                 Number(coin.dataset.x);
 
 
-            /*
-               A moeda fica 135px acima
-               da base do mundo.
-            */
 
             const coinY = 135;
 
@@ -869,9 +784,6 @@ function checkCoins() {
 }
 
 
-/* ==========================================
-   COLETAR MOEDA
-========================================== */
 
 function collectCoin(coin) {
 
@@ -883,10 +795,6 @@ function collectCoin(coin) {
         "collected"
     );
 
-
-    /*
-       Pequeno efeito antes de desaparecer.
-    */
 
     setTimeout(
         function() {
@@ -907,9 +815,6 @@ function collectCoin(coin) {
 }
 
 
-/* ==========================================
-   RESETAR MOEDAS
-========================================== */
 
 function resetCoins() {
 
@@ -936,9 +841,6 @@ function resetCoins() {
 }
 
 
-/* ==========================================
-   INIMIGOS
-========================================== */
 
 function checkEnemies() {
 
@@ -999,18 +901,12 @@ function checkEnemies() {
                 PLAYER_HEIGHT;
 
 
-            /*
-               Colisão horizontal.
-            */
 
             const horizontalCollision =
                 playerLeft < enemyRight &&
                 playerRight > enemyLeft;
 
 
-            /*
-               Colisão vertical.
-            */
 
             const verticalCollision =
                 playerBottom < enemyTop &&
@@ -1027,13 +923,6 @@ function checkEnemies() {
             }
 
 
-            /*
-               Pisão.
-
-               O jogador precisa estar
-               descendo e seus pés precisam
-               estar próximos do topo.
-            */
 
             const stompCollision =
                 game.velocityY <= 0 &&
@@ -1054,10 +943,6 @@ function checkEnemies() {
             }
 
 
-            /*
-               Colisão lateral.
-            */
-
             loseLife();
 
         }
@@ -1065,10 +950,6 @@ function checkEnemies() {
 
 }
 
-
-/* ==========================================
-   DERROTAR MONSTRO
-========================================== */
 
 function defeatEnemy(enemy) {
 
@@ -1109,9 +990,6 @@ function defeatEnemy(enemy) {
 }
 
 
-/* ==========================================
-   RESETAR INIMIGOS
-========================================== */
 
 function resetEnemies() {
 
@@ -1138,9 +1016,6 @@ function resetEnemies() {
 }
 
 
-/* ==========================================
-   PERDER VIDA
-========================================== */
 
 function loseLife() {
 
@@ -1172,9 +1047,6 @@ function loseLife() {
 }
 
 
-/* ==========================================
-   QUEDA NO VAZIO
-========================================== */
 
 function fallDown() {
 
@@ -1198,9 +1070,6 @@ function fallDown() {
 }
 
 
-/* ==========================================
-   DERROTA
-========================================== */
 
 function showLoseMessage(
     title,
@@ -1229,9 +1098,6 @@ function showLoseMessage(
 }
 
 
-/* ==========================================
-   FECHAR MENSAGEM
-========================================== */
 
 function closeMessage() {
 
@@ -1242,9 +1108,6 @@ function closeMessage() {
 }
 
 
-/* ==========================================
-   DESAFIOS
-========================================== */
 
 function checkChallenges() {
 
@@ -1280,10 +1143,6 @@ function checkChallenges() {
                 );
 
 
-            /*
-               Os desafios precisam
-               ser respondidos em ordem.
-            */
 
             if (
                 index !== game.answered
@@ -1357,9 +1216,6 @@ function checkChallenges() {
 }
 
 
-/* ==========================================
-   ABRIR DESAFIO
-========================================== */
 
 function openChallenge(index) {
 
@@ -1441,9 +1297,6 @@ function openChallenge(index) {
 }
 
 
-/* ==========================================
-   RESPONDER DESAFIO
-========================================== */
 
 function answerChallenge(
     questionIndex,
@@ -1570,9 +1423,6 @@ function answerChallenge(
 }
 
 
-/* ==========================================
-   RESETAR DESAFIOS
-========================================== */
 
 function resetChallenges() {
 
@@ -1601,9 +1451,6 @@ function resetChallenges() {
 }
 
 
-/* ==========================================
-   FINAL
-========================================== */
 
 function checkFinish() {
 
@@ -1613,11 +1460,6 @@ function checkFinish() {
 
     }
 
-
-    /*
-       A porta só abre depois
-       dos quatro desafios.
-    */
 
     if (
         game.answered < 4
@@ -1660,9 +1502,6 @@ function checkFinish() {
 }
 
 
-/* ==========================================
-   VITÓRIA
-========================================== */
 
 function winGame() {
 
@@ -1694,9 +1533,6 @@ function winGame() {
 }
 
 
-/* ==========================================
-   HUD
-========================================== */
 
 function updateHUD() {
 
@@ -1713,10 +1549,6 @@ function updateHUD() {
 
 }
 
-
-/* ==========================================
-   MELHOR PONTUAÇÃO
-========================================== */
 
 function saveBestScore() {
 
@@ -1765,9 +1597,6 @@ function showBestScore() {
 showBestScore();
 
 
-/* ==========================================
-   CONTROLES MOBILE
-========================================== */
 
 function startLeft(event) {
 
@@ -1874,9 +1703,6 @@ jumpControl.addEventListener(
 );
 
 
-/* ==========================================
-   CONTROLES COM MOUSE
-========================================== */
 
 leftControl.addEventListener(
     "mousedown",
@@ -1948,9 +1774,6 @@ jumpControl.addEventListener(
 );
 
 
-/* ==========================================
-   LIMPAR CONTROLES
-========================================== */
 
 window.addEventListener(
     "blur",
