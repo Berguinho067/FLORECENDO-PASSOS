@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Florecendo Passos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         MENU
+    ====================================================== -->
+
+    <section id="menu" class="screen active">
+
+        <div class="menu-box">
+
+            <h1>FLORECENDO PASSOS</h1>
+
+            <p class="subtitle">
+                Uma aventura de raciocínio e desafios!
+            </p>
+
+            <div class="hero-preview">
+
+                <div class="player-body">
+
+                    <div class="player-hair"></div>
+
+                    <div class="player-face">
+                        <div class="player-eye left"></div>
+                        <div class="player-eye right"></div>
+                    </div>
+
+                    <div class="player-shirt"></div>
+
+                    <div class="player-arm left"></div>
+                    <div class="player-arm right"></div>
+
+                    <div class="player-leg left"></div>
+                    <div class="player-leg right"></div>
+
+                </div>
+
+            </div>
+
+            <button id="playButton" class="main-button">
+                JOGAR
+            </button>
+
+            <button id="instructionsButton" class="secondary-button">
+                INSTRUÇÕES
+            </button>
+
+            <p id="bestScore">
+                Melhor pontuação: 0
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INSTRUÇÕES
+    ====================================================== -->
+
+    <section id="instructions" class="screen">
+
+        <div class="panel">
+
+            <h2>INSTRUÇÕES</h2>
+
+            <div class="instruction-list">
+
+                <p>
+                    Use as setas esquerda e direita para andar.
+                </p>
+
+                <p>
+                    Use a seta para cima ou espaço para pular.
+                </p>
+
+                <p>
+                    Pule sobre os monstros para derrotá-los.
+                </p>
+
+                <p>
+                    Se encostar na lateral de um monstro, você perde.
+                </p>
+
+                <p>
+                    Se cair em um vazio, você perde e deverá recomeçar.
+                </p>
+
+                <p>
+                    Encontre os quatro blocos de desafio.
+                </p>
+
+                <p>
+                    Os desafios precisam ser respondidos em ordem.
+                </p>
+
+                <p>
+                    Depois de responder aos quatro desafios, chegue até a porta.
+                </p>
+
+            </div>
+
+            <button id="backButton" class="secondary-button">
+                VOLTAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JOGO
+    ====================================================== -->
+
+    <section id="gameScreen" class="screen">
+
+        <!-- HUD -->
+
+        <div id="hud">
+
+            <span>
+                Pontos:
+                <strong id="score">0</strong>
+            </span>
+
+            <span>
+                Vidas:
+                <strong id="lives">3</strong>
+            </span>
+
+            <span>
+                Desafios:
+                <strong id="questions">0</strong>/4
+            </span>
+
+        </div>
+
+
+        <!-- ÁREA DO JOGO -->
+
+        <div id="game">
+
+            <div id="world">
+
+                <!-- =================================================
+                     FUNDO DA SALA DE AULA
+                ================================================== -->
+
+                <div class="sky"></div>
+
+
+                <!-- =================================================
+                     TERRENOS
+                     
+                     Os espaços entre eles são vazios reais.
+                ================================================== -->
+
+                <div class="ground ground-1"></div>
+
+                <div class="ground ground-2"></div>
+
+                <div class="ground ground-3"></div>
+
+                <div class="ground ground-4"></div>
+
+                <div class="ground ground-5"></div>
+
+
+                <!-- =================================================
+                     MOEDAS
+                ================================================== -->
+
+                <div
+                    class="coin"
+                    data-x="300"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="750"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="1150"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="1650"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="2100"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="2550"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+                <div
+                    class="coin"
+                    data-x="3000"
+                    aria-label="Moeda"
+                >
+                    <div class="coin-inner"></div>
+                </div>
+
+
+                <!-- =================================================
+                     MONSTROS
+                ================================================== -->
+
+                <div
+                    class="enemy"
+                    data-x="800"
+                >
+
+                    <div class="enemy-eye left-eye"></div>
+                    <div class="enemy-eye right-eye"></div>
+
+                    <div class="enemy-mouth"></div>
+
+                    <div class="enemy-foot left-foot"></div>
+                    <div class="enemy-foot right-foot"></div>
+
+                </div>
+
+
+                <div
+                    class="enemy"
+                    data-x="1350"
+                >
+
+                    <div class="enemy-eye left-eye"></div>
+                    <div class="enemy-eye right-eye"></div>
+
+                    <div class="enemy-mouth"></div>
+
+                    <div class="enemy-foot left-foot"></div>
+                    <div class="enemy-foot right-foot"></div>
+
+                </div>
+
+
+                <div
+                    class="enemy"
+                    data-x="1950"
+                >
+
+                    <div class="enemy-eye left-eye"></div>
+                    <div class="enemy-eye right-eye"></div>
+
+                    <div class="enemy-mouth"></div>
+
+                    <div class="enemy-foot left-foot"></div>
+                    <div class="enemy-foot right-foot"></div>
+
+                </div>
+
+
+                <div
+                    class="enemy"
+                    data-x="2650"
+                >
+
+                    <div class="enemy-eye left-eye"></div>
+                    <div class="enemy-eye right-eye"></div>
+
+                    <div class="enemy-mouth"></div>
+
+                    <div class="enemy-foot left-foot"></div>
+                    <div class="enemy-foot right-foot"></div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DESAFIOS
+                ================================================== -->
+
+                <div
+                    class="challenge-block"
+                    data-challenge="0"
+                    data-x="600"
+                >
+                    ?
+                </div>
+
+
+                <div
+                    class="challenge-block"
+                    data-challenge="1"
+                    data-x="1250"
+                >
+                    ?
+                </div>
+
+
+                <div
+                    class="challenge-block"
+                    data-challenge="2"
+                    data-x="2000"
+                >
+                    ?
+                </div>
+
+
+                <div
+                    class="challenge-block"
+                    data-challenge="3"
+                    data-x="2750"
+                >
+                    ?
+                </div>
+
+
+                <!-- =================================================
+                     PLACA FINAL
+                ================================================== -->
+
+                <div class="final-sign">
+                    FINAL
+                </div>
+
+
+                <!-- =================================================
+                     PORTA
+                ================================================== -->
+
+                <div id="door">
+
+                    <div class="door-window"></div>
+
+                    <div class="door-handle"></div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFESSORA
+                ================================================== -->
+
+                <div id="teacher">
+
+                    <div class="teacher-hair"></div>
+
+                    <div class="teacher-head">
+
+                        <div class="teacher-eye left"></div>
+                        <div class="teacher-eye right"></div>
+
+                        <div class="teacher-mouth"></div>
+
+                    </div>
+
+                    <div class="teacher-body"></div>
+
+                    <div class="teacher-arm left"></div>
+                    <div class="teacher-arm right"></div>
+
+                    <div class="teacher-leg left"></div>
+                    <div class="teacher-leg right"></div>
+
+                </div>
+
+
+                <!-- =================================================
+                     JOGADOR
+                ================================================== -->
+
+                <div id="player">
+
+                    <div class="player-hair"></div>
+
+                    <div class="player-face">
+
+                        <div class="player-eye left"></div>
+                        <div class="player-eye right"></div>
+
+                    </div>
+
+                    <div class="player-shirt"></div>
+
+                    <div class="player-arm left"></div>
+                    <div class="player-arm right"></div>
+
+                    <div class="player-leg left"></div>
+                    <div class="player-leg right"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             CONTROLES MOBILE
+        ====================================================== -->
+
+        <div id="mobileControls">
+
+            <button
+                id="leftControl"
+                type="button"
+                aria-label="Andar para esquerda"
+            >
+                &lt;
+            </button>
+
+            <button
+                id="jumpControl"
+                type="button"
+                aria-label="Pular"
+            >
+                PULAR
+            </button>
+
+            <button
+                id="rightControl"
+                type="button"
+                aria-label="Andar para direita"
+            >
+                &gt;
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODAL DE PERGUNTA
+    ====================================================== -->
+
+    <div id="questionModal">
+
+        <div class="question-box">
+
+            <div class="brain-icon"></div>
+
+            <h2>
+                DESAFIO DE RACIOCÍNIO
+            </h2>
+
+            <p id="questionText"></p>
+
+            <div id="answers"></div>
+
+            <p id="feedback"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DE DERROTA
+    ====================================================== -->
+
+    <div id="messageModal">
+
+        <div class="message-box">
+
+            <h2 id="messageTitle">
+                VOCÊ PERDEU!
+            </h2>
+
+            <p id="messageText">
+                Você perdeu.
+            </p>
+
+            <button
+                id="messageRestart"
+                class="main-button"
+                type="button"
+            >
+                RECOMEÇAR
+            </button>
+
+            <button
+                id="messageMenu"
+                class="secondary-button"
+                type="button"
+            >
+                MENU
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         VITÓRIA
+    ====================================================== -->
+
+    <section id="victory" class="screen">
+
+        <div class="victory-box">
+
+            <div class="confetti">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <h1>
+                VOCÊ CONSEGUIU!
+            </h1>
+
+
+            <div class="teacher-big">
+
+                <div class="teacher-hair"></div>
+
+                <div class="teacher-head">
+
+                    <div class="teacher-eye left"></div>
+                    <div class="teacher-eye right"></div>
+
+                </div>
+
+                <div class="teacher-body"></div>
+
+            </div>
+
+
+            <h2>
+                VOCÊ SALVOU A PROFESSORA!
+            </h2>
+
+
+            <p>
+                Parabéns! Você chegou ao final da aventura.
+            </p>
+
+
+            <div class="final-score">
+
+                <p>
+                    Pontuação:
+                    <strong id="finalScore">0</strong>
+                </p>
+
+                <p>
+                    Desafios corretos:
+                    <strong id="correctQuestions">0</strong>/4
+                </p>
+
+            </div>
+
+
+            <button
+                id="restartButton"
+                class="main-button"
+                type="button"
+            >
+                JOGAR NOVAMENTE
+            </button>
+
+
+            <button
+                id="menuButton"
+                class="secondary-button"
+                type="button"
+            >
+                MENU
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
