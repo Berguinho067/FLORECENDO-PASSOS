@@ -1,0 +1,1602 @@
+/* =========================================================
+   FLORECENDO PASSOS
+   STYLE.CSS
+========================================================= */
+
+
+/* =========================================================
+   CONFIGURAÇÃO GERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    background: #1d1833;
+
+    font-family: "Courier New", monospace;
+
+    image-rendering: pixelated;
+}
+
+button {
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TELAS
+========================================================= */
+
+.screen {
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+#menu {
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            #55c8ef 0%,
+            #a9e8f5 65%,
+            #67b653 65%,
+            #67b653 100%
+        );
+}
+
+.menu-box {
+    width: 90%;
+    max-width: 600px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: #fff1bd;
+
+    border: 8px solid #302344;
+
+    box-shadow:
+        12px 12px 0 #302344;
+}
+
+.menu-box h1 {
+    color: #d84455;
+
+    font-size: clamp(32px, 7vw, 56px);
+
+    line-height: 1.05;
+
+    text-shadow:
+        4px 4px 0 #f4c84c;
+}
+
+.subtitle {
+    margin-top: 15px;
+
+    color: #302344;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   PERSONAGEM DO MENU
+========================================================= */
+
+.hero-preview {
+    height: 150px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-preview .player-body {
+    position: relative;
+
+    width: 55px;
+    height: 100px;
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.main-button,
+.secondary-button {
+    display: block;
+
+    width: 80%;
+
+    margin: 15px auto;
+
+    padding: 15px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #302344;
+
+    border: 5px solid #302344;
+
+    box-shadow:
+        6px 6px 0 #302344;
+
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s;
+}
+
+.main-button {
+    background: #f5ca45;
+}
+
+.secondary-button {
+    background: #82d68a;
+}
+
+.main-button:hover,
+.secondary-button:hover {
+    transform:
+        translate(3px, 3px);
+
+    box-shadow:
+        3px 3px 0 #302344;
+}
+
+.main-button:active,
+.secondary-button:active {
+    transform:
+        translate(6px, 6px);
+
+    box-shadow: none;
+}
+
+#bestScore {
+    color: #5a536c;
+
+    font-size: 14px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   INSTRUÇÕES
+========================================================= */
+
+#instructions {
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            #64cdf1 0%,
+            #b2ecf5 65%,
+            #68b657 65%,
+            #68b657 100%
+        );
+}
+
+.panel {
+    width: 90%;
+    max-width: 650px;
+
+    padding: 30px;
+
+    background: #fff1bd;
+
+    border: 8px solid #302344;
+
+    box-shadow:
+        10px 10px 0 #302344;
+}
+
+.panel h2 {
+    text-align: center;
+
+    color: #d84455;
+
+    margin-bottom: 25px;
+
+    font-size: 32px;
+}
+
+.instruction-list p {
+    color: #302344;
+
+    line-height: 1.6;
+
+    margin-bottom: 12px;
+}
+
+.instruction-list p::before {
+    content: "> ";
+
+    color: #d84455;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+#gameScreen {
+    flex-direction: column;
+
+    background: #111;
+}
+
+#hud {
+    height: 60px;
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    color: white;
+
+    background: #302344;
+
+    border-bottom: 5px solid #171126;
+
+    font-size: 15px;
+
+    z-index: 1000;
+
+    user-select: none;
+}
+
+#hud strong {
+    color: #f5ca45;
+}
+
+
+/* =========================================================
+   ÁREA DO JOGO
+========================================================= */
+
+#game {
+    position: relative;
+
+    width: 100%;
+
+    height: calc(100vh - 60px);
+
+    overflow: hidden;
+
+    background: #ccecf2;
+}
+
+#world {
+    position: absolute;
+
+    width: 3300px;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform:
+        translateX(0);
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   FUNDO DA SALA DE AULA
+========================================================= */
+
+.sky {
+    position: absolute;
+
+    inset: 0;
+
+    background-color: #b8dce7;
+
+    background-image:
+        url("https://static.vecteezy.com/ti/vetor-gratis/p1/36097098-pixel-arte-ilustracao-sala-de-aula-fundo-pixelizada-sala-de-aula-escola-sala-de-aula-fundo-pixelizada-para-a-pixel-arte-jogos-e-icone-para-local-na-rede-internet-e-video-jogo-velho-escola-retro-vetor.jpg");
+
+    background-size: auto 100%;
+
+    background-position:
+        center top;
+
+    background-repeat:
+        repeat-x;
+
+    image-rendering: pixelated;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   TERRENOS
+========================================================= */
+
+.ground {
+    position: absolute;
+
+    bottom: 0;
+
+    height: 100px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #8a4e28 0px,
+            #8a4e28 36px,
+            #6e3b20 36px,
+            #6e3b20 42px
+        );
+
+    border-top:
+        12px solid #4e9d37;
+
+    z-index: 5;
+}
+
+.ground::before {
+    content: "";
+
+    position: absolute;
+
+    top: -12px;
+    left: 0;
+
+    width: 100%;
+    height: 12px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #78c84f 0px,
+            #78c84f 28px,
+            #4f9e36 28px,
+            #4f9e36 34px
+        );
+}
+
+.ground-1 {
+    left: 0;
+    width: 900px;
+}
+
+.ground-2 {
+    left: 1020px;
+    width: 530px;
+}
+
+.ground-3 {
+    left: 1700px;
+    width: 600px;
+}
+
+.ground-4 {
+    left: 2450px;
+    width: 600px;
+}
+
+.ground-5 {
+    left: 3150px;
+    width: 150px;
+}
+
+
+/* =========================================================
+   MOEDAS
+========================================================= */
+
+.coin {
+    position: absolute;
+
+    width: 35px;
+    height: 45px;
+
+    background: #f5c431;
+
+    border: 5px solid #ad7711;
+
+    border-radius: 50%;
+
+    z-index: 40;
+
+    bottom: 180px;
+
+    animation:
+        coinMove 0.7s infinite alternate;
+
+    transition:
+        opacity 0.15s,
+        transform 0.15s;
+
+    box-shadow:
+        inset 4px 0 0 #ffe777,
+        3px 3px 0 #6d4810;
+}
+
+
+/* =========================================================
+   POSIÇÕES DAS MOEDAS
+========================================================= */
+
+.coin[data-x="300"] {
+    left: 300px;
+}
+
+.coin[data-x="750"] {
+    left: 750px;
+}
+
+.coin[data-x="1150"] {
+    left: 1150px;
+}
+
+.coin[data-x="1650"] {
+    left: 1650px;
+}
+
+.coin[data-x="2100"] {
+    left: 2100px;
+}
+
+.coin[data-x="2550"] {
+    left: 2550px;
+}
+
+.coin[data-x="3000"] {
+    left: 3000px;
+}
+
+
+/* =========================================================
+   INTERIOR DA MOEDA
+========================================================= */
+
+.coin-inner {
+    position: absolute;
+
+    width: 9px;
+    height: 24px;
+
+    top: 6px;
+    left: 8px;
+
+    background: #ffe777;
+
+    border-radius: 50%;
+}
+
+.coin.collected {
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation: none;
+
+    transform:
+        translateY(-20px)
+        scale(0.4);
+}
+
+@keyframes coinMove {
+
+    from {
+        transform:
+            translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(-10px);
+    }
+}
+
+
+/* =========================================================
+   MONSTROS
+========================================================= */
+
+.enemy {
+    position: absolute;
+
+    bottom: 100px;
+
+    width: 70px;
+    height: 65px;
+
+    background: #7a4ab1;
+
+    border: 5px solid #3f2860;
+
+    border-radius:
+        20px 20px 12px 12px;
+
+    z-index: 15;
+
+    animation:
+        enemyMove 1.4s infinite alternate;
+
+    box-shadow:
+        5px 5px 0 #302344;
+}
+
+.enemy[data-x="800"] {
+    left: 800px;
+}
+
+.enemy[data-x="1350"] {
+    left: 1350px;
+}
+
+.enemy[data-x="1950"] {
+    left: 1950px;
+}
+
+.enemy[data-x="2650"] {
+    left: 2650px;
+}
+
+.enemy-eye {
+    position: absolute;
+
+    top: 15px;
+
+    width: 13px;
+    height: 18px;
+
+    background: white;
+
+    border: 3px solid #302344;
+}
+
+.enemy-eye::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 7px;
+
+    background: #302344;
+
+    top: 3px;
+    left: 2px;
+}
+
+.enemy .left-eye {
+    left: 14px;
+}
+
+.enemy .right-eye {
+    right: 14px;
+}
+
+.enemy-mouth {
+    position: absolute;
+
+    width: 25px;
+    height: 7px;
+
+    left: 18px;
+    top: 43px;
+
+    background: #302344;
+}
+
+.enemy-foot {
+    position: absolute;
+
+    bottom: -12px;
+
+    width: 25px;
+    height: 14px;
+
+    background: #4f306e;
+
+    border-radius: 50%;
+}
+
+.enemy .left-foot {
+    left: 5px;
+}
+
+.enemy .right-foot {
+    right: 5px;
+}
+
+@keyframes enemyMove {
+
+    from {
+        transform:
+            translateX(-15px);
+    }
+
+    to {
+        transform:
+            translateX(15px);
+    }
+}
+
+
+/* =========================================================
+   BLOCOS DE DESAFIO
+========================================================= */
+
+.challenge-block {
+    position: absolute;
+
+    bottom: 155px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #f5ca45;
+
+    border: 6px solid #7a5212;
+
+    box-shadow:
+        inset 0 6px 0 #ffe777,
+        6px 6px 0 #302344;
+
+    color: #302344;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    z-index: 30;
+
+    cursor: pointer;
+
+    animation:
+        challengeMove 0.8s infinite alternate;
+}
+
+.challenge-block[data-x="600"] {
+    left: 600px;
+}
+
+.challenge-block[data-x="1250"] {
+    left: 1250px;
+}
+
+.challenge-block[data-x="2000"] {
+    left: 2000px;
+}
+
+.challenge-block[data-x="2750"] {
+    left: 2750px;
+}
+
+.challenge-block.collected {
+    background: #83d78a;
+
+    animation: none;
+
+    color: #238443;
+}
+
+@keyframes challengeMove {
+
+    from {
+        transform:
+            translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(-6px);
+    }
+}
+
+
+/* =========================================================
+   JOGADOR
+========================================================= */
+
+#player {
+    position: absolute;
+
+    left: 120px;
+    bottom: 100px;
+
+    width: 55px;
+    height: 90px;
+
+    z-index: 50;
+
+    will-change:
+        left,
+        bottom;
+}
+
+
+/* =========================================================
+   CABELO
+========================================================= */
+
+#player .player-hair,
+.hero-preview .player-hair {
+    position: absolute;
+
+    width: 43px;
+    height: 25px;
+
+    top: 0;
+    left: 6px;
+
+    background: #302344;
+
+    border:
+        4px solid #20182e;
+}
+
+
+/* =========================================================
+   ROSTO
+========================================================= */
+
+#player .player-face,
+.hero-preview .player-face {
+    position: absolute;
+
+    width: 40px;
+    height: 35px;
+
+    top: 20px;
+    left: 8px;
+
+    background: #f0b47a;
+
+    border:
+        4px solid #302344;
+}
+
+
+/* =========================================================
+   OLHOS
+========================================================= */
+
+#player .player-eye {
+    position: absolute;
+
+    width: 5px;
+    height: 7px;
+
+    top: 10px;
+
+    background: #302344;
+}
+
+#player .player-eye.left {
+    left: 8px;
+}
+
+#player .player-eye.right {
+    right: 8px;
+}
+
+
+/* =========================================================
+   CAMISA
+========================================================= */
+
+#player .player-shirt,
+.hero-preview .player-shirt {
+    position: absolute;
+
+    width: 48px;
+    height: 32px;
+
+    top: 52px;
+    left: 4px;
+
+    background: #e94d52;
+
+    border:
+        4px solid #302344;
+}
+
+
+/* =========================================================
+   BRAÇOS
+========================================================= */
+
+.player-arm {
+    position: absolute;
+
+    width: 12px;
+    height: 30px;
+
+    top: 55px;
+
+    background: #f0b47a;
+
+    border:
+        3px solid #302344;
+}
+
+.player-arm.left {
+    left: -7px;
+}
+
+.player-arm.right {
+    right: -7px;
+}
+
+
+/* =========================================================
+   PERNAS
+========================================================= */
+
+.player-leg {
+    position: absolute;
+
+    width: 17px;
+    height: 25px;
+
+    bottom: 0;
+
+    background: #3158a8;
+
+    border:
+        4px solid #302344;
+}
+
+.player-leg.left {
+    left: 8px;
+}
+
+.player-leg.right {
+    right: 8px;
+}
+
+
+/* =========================================================
+   PORTA
+========================================================= */
+
+#door {
+    position: absolute;
+
+    left: 3180px;
+    bottom: 100px;
+
+    width: 90px;
+    height: 145px;
+
+    background: #743f24;
+
+    border:
+        8px solid #392218;
+
+    z-index: 20;
+
+    box-shadow:
+        7px 7px 0 #302344;
+}
+
+.door-window {
+    position: absolute;
+
+    width: 40px;
+    height: 40px;
+
+    top: 20px;
+    left: 17px;
+
+    background: #83c9df;
+
+    border:
+        5px solid #392218;
+}
+
+.door-handle {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    right: 12px;
+    top: 78px;
+
+    background: #e5bd3f;
+
+    border:
+        3px solid #392218;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   PROFESSORA
+========================================================= */
+
+#teacher {
+    position: absolute;
+
+    left: 3230px;
+    bottom: 100px;
+
+    width: 75px;
+    height: 150px;
+
+    z-index: 25;
+}
+
+.teacher-hair {
+    position: absolute;
+
+    width: 65px;
+    height: 60px;
+
+    left: 5px;
+    top: 0;
+
+    background: #b54c38;
+
+    border:
+        5px solid #4b2a2a;
+
+    border-radius:
+        40px 40px 15px 15px;
+}
+
+.teacher-head {
+    position: absolute;
+
+    width: 48px;
+    height: 48px;
+
+    left: 14px;
+    top: 30px;
+
+    background: #f0b47a;
+
+    border:
+        5px solid #4b2a2a;
+}
+
+.teacher-eye {
+    position: absolute;
+
+    width: 5px;
+    height: 7px;
+
+    top: 15px;
+
+    background: #302344;
+}
+
+.teacher-eye.left {
+    left: 10px;
+}
+
+.teacher-eye.right {
+    right: 10px;
+}
+
+.teacher-mouth {
+    position: absolute;
+
+    width: 14px;
+    height: 4px;
+
+    left: 13px;
+    top: 31px;
+
+    background: #8c3942;
+}
+
+.teacher-body {
+    position: absolute;
+
+    width: 65px;
+    height: 60px;
+
+    left: 5px;
+    top: 78px;
+
+    background: #e56a72;
+
+    border:
+        5px solid #4b2a2a;
+}
+
+.teacher-arm {
+    position: absolute;
+
+    width: 14px;
+    height: 45px;
+
+    top: 83px;
+
+    background: #f0b47a;
+
+    border:
+        4px solid #4b2a2a;
+}
+
+.teacher-arm.left {
+    left: -8px;
+}
+
+.teacher-arm.right {
+    right: -8px;
+}
+
+.teacher-leg {
+    position: absolute;
+
+    width: 18px;
+    height: 30px;
+
+    bottom: 0;
+
+    background: #4b4fa3;
+
+    border:
+        4px solid #302344;
+}
+
+.teacher-leg.left {
+    left: 15px;
+}
+
+.teacher-leg.right {
+    right: 15px;
+}
+
+
+/* =========================================================
+   PLACA FINAL
+========================================================= */
+
+.final-sign {
+    position: absolute;
+
+    left: 3070px;
+    bottom: 290px;
+
+    padding:
+        12px 20px;
+
+    background: #fff1bd;
+
+    color: #302344;
+
+    border:
+        5px solid #302344;
+
+    font-weight: bold;
+
+    z-index: 20;
+
+    box-shadow:
+        5px 5px 0 #302344;
+}
+
+
+/* =========================================================
+   MODAIS
+========================================================= */
+
+#questionModal,
+#messageModal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        rgba(25, 20, 45, 0.88);
+
+    z-index: 5000;
+
+    padding: 20px;
+}
+
+#questionModal.show,
+#messageModal.show {
+    display: flex;
+}
+
+.question-box,
+.message-box {
+    width: 90%;
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #fff1bd;
+
+    border:
+        8px solid #302344;
+
+    box-shadow:
+        10px 10px 0 #302344;
+}
+
+.brain-icon {
+    width: 55px;
+    height: 45px;
+
+    margin:
+        0 auto 15px;
+
+    background: #db79a2;
+
+    border:
+        5px solid #542542;
+
+    border-radius: 50%;
+}
+
+.question-box h2,
+.message-box h2 {
+    color: #d84455;
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+#questionText {
+    color: #302344;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+#answers {
+    display: grid;
+
+    gap: 12px;
+}
+
+.answer {
+    padding: 14px;
+
+    color: #302344;
+
+    background: #83d78a;
+
+    border:
+        4px solid #302344;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    transition:
+        background 0.15s,
+        transform 0.1s;
+}
+
+.answer:hover {
+    background: #f5ca45;
+
+    transform:
+        translateY(-2px);
+}
+
+.answer:disabled {
+    cursor: default;
+
+    opacity: 0.7;
+
+    transform: none;
+}
+
+#feedback {
+    min-height: 25px;
+
+    margin-top: 15px;
+
+    font-weight: bold;
+}
+
+#messageText {
+    color: #302344;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   VITÓRIA
+========================================================= */
+
+#victory {
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            #59c8ef 0%,
+            #b3ebf5 65%,
+            #69b958 65%,
+            #69b958 100%
+        );
+}
+
+.victory-box {
+    width: 90%;
+    max-width: 650px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #fff1bd;
+
+    border:
+        8px solid #302344;
+
+    box-shadow:
+        10px 10px 0 #302344;
+}
+
+.victory-box h1 {
+    color: #d84455;
+
+    font-size: 40px;
+
+    text-shadow:
+        3px 3px 0 #f5ca45;
+}
+
+.victory-box h2 {
+    color: #302344;
+
+    margin:
+        15px 0;
+}
+
+.victory-box p {
+    color: #302344;
+
+    margin: 10px;
+}
+
+.teacher-big {
+    position: relative;
+
+    width: 100px;
+    height: 150px;
+
+    margin:
+        20px auto;
+}
+
+.teacher-big .teacher-hair {
+    left: 18px;
+}
+
+.teacher-big .teacher-head {
+    left: 25px;
+}
+
+.teacher-big .teacher-body {
+    left: 15px;
+    top: 78px;
+}
+
+.final-score {
+    margin: 20px;
+
+    font-size: 18px;
+}
+
+.final-score strong {
+    color: #d84455;
+}
+
+.confetti span {
+    display: inline-block;
+
+    width: 15px;
+    height: 15px;
+
+    margin: 5px;
+
+    background: #e94d52;
+
+    animation:
+        confetti 1s infinite alternate;
+}
+
+.confetti span:nth-child(2) {
+    background: #4d78c7;
+}
+
+.confetti span:nth-child(3) {
+    background: #62ad52;
+}
+
+.confetti span:nth-child(4) {
+    background: #f5ca45;
+}
+
+.confetti span:nth-child(5) {
+    background: #9b59b6;
+}
+
+@keyframes confetti {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    to {
+        transform:
+            translateY(12px)
+            rotate(20deg);
+    }
+}
+
+
+/* =========================================================
+   CONTROLES MOBILE
+========================================================= */
+
+#mobileControls {
+    display: none;
+
+    position: fixed;
+
+    bottom: 15px;
+    left: 0;
+
+    width: 100%;
+
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 2000;
+
+    pointer-events: none;
+}
+
+#mobileControls button {
+    width: 70px;
+    height: 60px;
+
+    background: #fff1bd;
+
+    border:
+        5px solid #302344;
+
+    color: #302344;
+
+    font-weight: bold;
+
+    font-size: 20px;
+
+    touch-action: none;
+
+    pointer-events: auto;
+
+    box-shadow:
+        5px 5px 0 #302344;
+}
+
+#mobileControls button:active {
+    transform:
+        translate(3px, 3px);
+
+    box-shadow:
+        2px 2px 0 #302344;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    #mobileControls {
+        display: flex;
+    }
+
+    #hud {
+        height: 55px;
+
+        font-size: 11px;
+    }
+
+    #game {
+        height:
+            calc(100vh - 55px);
+    }
+
+    .menu-box,
+    .panel,
+    .question-box,
+    .message-box,
+    .victory-box {
+        padding: 20px;
+
+        border-width: 6px;
+
+        box-shadow:
+            6px 6px 0 #302344;
+    }
+
+    .menu-box h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .instruction-list p {
+        font-size: 13px;
+
+        margin-bottom: 9px;
+    }
+
+    .panel h2 {
+        font-size: 25px;
+    }
+
+    .question-box h2,
+    .message-box h2 {
+        font-size: 20px;
+    }
+
+    #questionText {
+        font-size: 17px;
+    }
+
+    .answer {
+        padding: 11px;
+
+        font-size: 16px;
+    }
+
+    .victory-box h1 {
+        font-size: 30px;
+    }
+
+    .victory-box h2 {
+        font-size: 19px;
+    }
+
+    .final-score {
+        font-size: 16px;
+    }
+
+    #mobileControls button {
+        width: 65px;
+        height: 55px;
+
+        font-size: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+========================================================= */
+
+@media (max-height: 600px) {
+
+    .menu-box,
+    .panel,
+    .question-box,
+    .message-box,
+    .victory-box {
+        max-height: 90vh;
+
+        overflow-y: auto;
+    }
+
+    .hero-preview {
+        height: 90px;
+    }
+
+    .instruction-list p {
+        margin-bottom: 6px;
+
+        line-height: 1.3;
+    }
+
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+button:focus-visible {
+    outline:
+        4px solid #ffffff;
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
