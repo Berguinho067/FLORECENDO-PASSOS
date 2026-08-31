@@ -633,11 +633,17 @@ button {
 }
 
 .challenge-block.collected {
-    background: #83d78a;
+    background-image: url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 
     animation: none;
 
-    color: #238443;
+    color: transparent;
+
+    opacity: 0.55;
 }
 
 @keyframes challengeMove {
