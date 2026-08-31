@@ -1536,11 +1536,6 @@ function updateHUD() {
     scoreElement.textContent =
         game.score;
 
-
-    livesElement.textContent =
-        game.lives;
-
-
     questionsElement.textContent =
         game.answered;
 

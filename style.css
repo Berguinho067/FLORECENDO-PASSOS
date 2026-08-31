@@ -612,7 +612,7 @@ button {
     cursor: pointer;
 
     animation:
-        challengeMove 0.8s infinite alternate;
+challengeMove 0.8s infinite alternate;
 }
 
 
