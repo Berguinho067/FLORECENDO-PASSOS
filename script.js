@@ -14,7 +14,6 @@ const player = document.getElementById("player");
 const world = document.getElementById("world");
 
 const scoreElement = document.getElementById("score");
-const livesElement = document.getElementById("lives");
 const questionsElement = document.getElementById("questions");
 
 const questionModal = document.getElementById("questionModal");
@@ -188,9 +187,7 @@ function createInitialGame() {
         jumping: false,
 
         onGround: true,
-
-        lives: 3,
-
+        
         score: 0,
 
         answered: 0,
