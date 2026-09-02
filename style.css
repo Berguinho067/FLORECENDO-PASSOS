@@ -279,7 +279,7 @@ button {
 
 
 
-    .sky {
+.sky {
         
     position: absolute;
     top: 0;
@@ -288,10 +288,11 @@ button {
     width: 3300px;
     height: 500px;
 
-    background-image: url("fundo.png");
+    background-image: url("https://thumbs.dreamstime.com/b/retro-pixelated-bookshelf-virtual-library-titles-spines-blur-readers-pixel-haven-retro-pixelated-bookshelf-314702477.jpg");
+
     background-repeat: repeat-x;
     background-position: left top;
-    background-size: 1728px 500px;
+    background-size: 800px 560px;
 
     z-index: 0;
     pointer-events: none;
