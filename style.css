@@ -263,41 +263,31 @@ button {
 }
 
 #world {
-    position: absolute;
-
+    position: relative;
     width: 3300px;
-    height: 100%;
-
-    left: 0;
-    top: 0;
-
-    transform:
-        translateX(0);
-
-    will-change: transform;
+    height: 600px;
+    overflow: hidden;
 }
 
 
 
     .sky {
-    position: absolute;
 
+    position: absolute;
     top: 0;
     left: 0;
 
     width: 3300px;
     height: 500px;
 
-    background-image: url("./fundo.png");
+    background-image: url("fundo.png");
+    background-repeat: repeat-x;
     background-position: left top;
-    background-repeat: no-repeat;
-    background-size: 3300px 500px;
-
-    image-rendering: pixelated;
+    background-size: 1728px 500px;
 
     z-index: 0;
     pointer-events: none;
-    
+
 }
 
 
