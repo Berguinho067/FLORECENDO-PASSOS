@@ -60,11 +60,30 @@ const DOOR_WIDTH = 90;
 
 const groundAreas = [
 
-    { left: 0, width: 850 },
-    { left: 1050, width: 650 },
-    { left: 1850, width: 700 },
-    { left: 2700, width: 650 },
-    { left: 3500, width: 900 }
+    {
+        start: 0,
+        end: 900
+    },
+
+    {
+        start: 1020,
+        end: 1550
+    },
+
+    {
+        start: 1700,
+        end: 2300
+    },
+
+    {
+        start: 2450,
+        end: 3050
+    },
+
+    {
+        start: 3150,
+        end: 3300
+    }
 
 ];
 
