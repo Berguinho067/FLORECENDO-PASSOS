@@ -283,10 +283,10 @@ button {
         position: absolute;
         inset: 0;
     
-        background-color: #b8dce7;
-
-        background: url("https://static.vecteezy.com/ti/vetor-gratis/p1/36097098-pixel-arte-ilustracao-sala-de-aula-fundo-pixelizada-sala-de-aula-escola-sala-de-aula-fundo-pixelizada-para-a-pixel-arte-jogos-e-icone-para-local-na-rede-internet-e-video-jogo-velho-escola-retro-vetor.jpg");
-
+        background-color: #2b162b;
+    
+        background-image: url("fundo.png");
+    
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
