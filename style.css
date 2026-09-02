@@ -280,7 +280,7 @@ button {
 
 
     .sky {
-        
+
     position: absolute;
     top: 0;
     left: 0;
@@ -594,7 +594,7 @@ button {
     justify-content: center;
     align-items: center;
 
-    background-image: url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
+    background-image: url("fundo.png");
 
     background-size: contain;
     background-position: center;
@@ -633,7 +633,7 @@ challengeMove 0.8s infinite alternate;
 }
 
 .challenge-block.collected {
-    background-image: url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
+    background-image: url("fundo.png");
 
     background-size: contain;
     background-position: center;
