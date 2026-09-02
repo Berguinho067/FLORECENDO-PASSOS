@@ -280,20 +280,24 @@ button {
 
 
     .sky {
-        
     position: absolute;
+
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+
+    width: 3300px;
+    height: 500px;
 
     background-image: url("./fundo.png");
-    background-position: center top;
+    background-position: left top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 3300px 500px;
 
     image-rendering: pixelated;
+
     z-index: 0;
+    pointer-events: none;
+    
 }
 
 
