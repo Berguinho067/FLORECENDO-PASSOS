@@ -310,7 +310,7 @@ button {
     background-image: url("https://pics.craiyon.com/2023-10-24/65021e30663e4e1c9a8d7ae7e40e2f15.webp");
     background-repeat: repeat;
     background-position: center;
-    background-size: 180px 180px;
+    background-size: 180px 100px;
 
     border-top: 12px solid #6b3f22;
     z-index: 5;
