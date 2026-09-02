@@ -263,16 +263,24 @@ button {
 }
 
 #world {
-    position: relative;
+    position: absolute;
+
     width: 3300px;
-    height: 600px;
-    overflow: hidden;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform:
+        translateX(0);
+
+    will-change: transform;
 }
 
 
 
     .sky {
-
+        
     position: absolute;
     top: 0;
     left: 0;
