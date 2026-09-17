@@ -125,11 +125,11 @@ const challenges = [
 
         options: [
             "6",
-            "8",
-            "9"
+            "9",
+            "8"
         ],
 
-        correct: 1
+        correct: 3
     },
 
     {
