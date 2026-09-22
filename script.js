@@ -102,7 +102,7 @@ let animationFrame = null;
 
 let answerLocked = false;
 
-
+let questionOrder = [];
 
 const challenges = [
 
@@ -159,6 +159,36 @@ const challenges = [
     }
 
 ];
+
+
+
+function shuffleArray(array) {
+
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [shuffled[i], shuffled[j]] =
+            [shuffled[j], shuffled[i]];
+
+    }
+
+    return shuffled;
+
+}
+
+
+function createQuestionOrder() {
+
+    return shuffleArray(
+        challenges.map(function(_, index) {
+            return index;
+        })
+    );
+
+}
 
 
 
@@ -401,6 +431,10 @@ function startGame() {
 
     game =
         createInitialGame();
+
+
+    
+    questionOrder = createQuestionOrder();
 
 
     answerLocked = false;
@@ -718,7 +752,6 @@ function checkCoins() {
                 Number(coin.dataset.x);
 
 
-
             const coinY = 135;
 
 
@@ -946,6 +979,7 @@ function checkEnemies() {
     );
 
 }
+
 
 
 function defeatEnemy(enemy) {
@@ -1226,15 +1260,18 @@ function openChallenge(index) {
     game.running = false;
 
 
+    const challengeIndex =
+        questionOrder[index];
+
     game.questionIndex =
-        index;
+        challengeIndex;
 
 
     answerLocked = false;
 
 
     const challenge =
-        challenges[index];
+        challenges[challengeIndex];
 
 
     questionText.textContent =
@@ -1248,9 +1285,19 @@ function openChallenge(index) {
     feedback.textContent =
         "";
 
+    const shuffledOptions =
+        challenge.options.map(function(option, optionIndex) {
 
-    challenge.options.forEach(
-        function(option, optionIndex) {
+            return {
+                text: option,
+                correct: optionIndex === challenge.correct
+            };
+
+        });
+
+
+    shuffleArray(shuffledOptions).forEach(
+        function(option) {
 
             const button =
                 document.createElement(
@@ -1263,7 +1310,7 @@ function openChallenge(index) {
 
 
             button.textContent =
-                option;
+                option.text;
 
 
             button.addEventListener(
@@ -1272,7 +1319,8 @@ function openChallenge(index) {
 
                     answerChallenge(
                         index,
-                        optionIndex
+                        challengeIndex,
+                        option.correct
                     );
 
                 }
@@ -1296,8 +1344,9 @@ function openChallenge(index) {
 
 
 function answerChallenge(
+    blockIndex,
     questionIndex,
-    answerIndex
+    isCorrect
 ) {
 
     if (answerLocked) {
@@ -1332,10 +1381,7 @@ function answerChallenge(
     game.answered++;
 
 
-    if (
-        answerIndex ===
-        challenge.correct
-    ) {
+    if (isCorrect) {
 
         game.correct++;
 
@@ -1366,7 +1412,7 @@ function answerChallenge(
 
     const block =
         document.querySelector(
-            `.challenge-block[data-challenge="${questionIndex}"]`
+            `.challenge-block[data-challenge="${blockIndex}"]`
         );
 
 
