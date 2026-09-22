@@ -442,6 +442,10 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     image-rendering: pixelated;
+
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .enemy[data-x="800"] {
@@ -458,74 +462,6 @@ button {
 
 .enemy[data-x="2650"] {
     left: 2650px;
-}
-
-.enemy-eye {
-    position: absolute;
-
-    top: 15px;
-
-    width: 13px;
-    height: 18px;
-
-    background: white;
-
-    border: 3px solid #302344;
-}
-
-.enemy-eye::after {
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 7px;
-
-    background: #302344;
-
-    top: 3px;
-    left: 2px;
-}
-
-.enemy .left-eye {
-    left: 14px;
-}
-
-.enemy .right-eye {
-    right: 14px;
-}
-
-.enemy-mouth {
-    position: absolute;
-
-    width: 25px;
-    height: 7px;
-
-    left: 18px;
-    top: 43px;
-
-    background: #302344;
-}
-
-.enemy-foot {
-    position: absolute;
-
-    bottom: -12px;
-
-    width: 25px;
-    height: 14px;
-
-    background: #4f306e;
-
-    border-radius: 50%;
-}
-
-.enemy .left-foot {
-    left: 5px;
-}
-
-.enemy .right-foot {
-    right: 5px;
 }
 
 @keyframes enemyMove {
