@@ -448,6 +448,10 @@ button {
     box-shadow: none;
 }
 
+.enemy > div {
+    display: none;
+}
+
 .enemy[data-x="800"] {
     left: 800px;
 }
