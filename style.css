@@ -437,27 +437,11 @@ button {
 }
 
 .enemy {
-    position: absolute;
-
-    bottom: 100px;
-
-    width: 70px;
-    height: 65px;
-
-    background: #7a4ab1;
-
-    border: 5px solid #3f2860;
-
-    border-radius:
-        20px 20px 12px 12px;
-
-    z-index: 15;
-
-    animation:
-        enemyMove 1.4s infinite alternate;
-
-    box-shadow:
-        5px 5px 0 #302344;
+    background-image: url("monstro.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;
 }
 
 .enemy[data-x="800"] {
