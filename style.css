@@ -437,7 +437,7 @@ button {
 }
 
 .enemy {
-    background-image: url("monstro2.png");
+    background-image: url("monstro.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
