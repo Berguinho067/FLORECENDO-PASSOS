@@ -442,10 +442,6 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     image-rendering: pixelated;
-
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
 }
 
 .enemy > div {
