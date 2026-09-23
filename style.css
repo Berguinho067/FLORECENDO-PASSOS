@@ -447,8 +447,7 @@ button {
     width: 70px;
     height: 65px;
 
-    background-image:
-        url("monstro_transparente.png");
+    background-image: url("monstro_transparente.png");
 
     background-repeat: no-repeat;
 
