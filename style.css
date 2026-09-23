@@ -442,11 +442,14 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     image-rendering: pixelated;
-
 }
 
-.enemy > div {
-    display: none;
+.enemy-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    image-rendering: pixelated;
 }
 
 .enemy[data-x="800"] {
