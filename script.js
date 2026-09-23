@@ -1,3 +1,4 @@
+
 const menu = document.getElementById("menu");
 const instructions = document.getElementById("instructions");
 const gameScreen = document.getElementById("gameScreen");
@@ -59,12 +60,33 @@ const DOOR_WIDTH = 90;
 
 
 const groundAreas = [
-    { start: 0, end: 850 },
-    { start: 1050, end: 1700 },
-    { start: 1850, end: 2550 },
-    { start: 2700, end: 3350 },
-    { start: 3500, end: 4400 }
-    ];
+
+    {
+        start: 0,
+        end: 850
+    },
+
+    {
+        start: 1050,
+        end: 1700
+    },
+
+    {
+        start: 1850,
+        end: 2550
+    },
+
+    {
+        start: 2700,
+        end: 3350
+    },
+
+    {
+        start: 3500,
+        end: 4400
+    }
+
+];
 
 
 
@@ -81,7 +103,7 @@ let animationFrame = null;
 
 let answerLocked = false;
 
-let questionOrder = [];
+
 
 const challenges = [
 
@@ -104,11 +126,11 @@ const challenges = [
 
         options: [
             "6",
-            "8",
-            "9"
+            "9",
+            "8"
         ],
 
-        correct: 1
+        correct: 3
     },
 
     {
@@ -138,36 +160,6 @@ const challenges = [
     }
 
 ];
-
-
-
-function shuffleArray(array) {
-
-    const shuffled = [...array];
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-
-        const j = Math.floor(Math.random() * (i + 1));
-
-        [shuffled[i], shuffled[j]] =
-            [shuffled[j], shuffled[i]];
-
-    }
-
-    return shuffled;
-
-}
-
-
-function createQuestionOrder() {
-
-    return shuffleArray(
-        challenges.map(function(_, index) {
-            return index;
-        })
-    );
-
-}
 
 
 
@@ -410,10 +402,6 @@ function startGame() {
 
     game =
         createInitialGame();
-
-
-    
-    questionOrder = createQuestionOrder();
 
 
     answerLocked = false;
@@ -731,6 +719,7 @@ function checkCoins() {
                 Number(coin.dataset.x);
 
 
+
             const coinY = 135;
 
 
@@ -958,7 +947,6 @@ function checkEnemies() {
     );
 
 }
-
 
 
 function defeatEnemy(enemy) {
@@ -1239,18 +1227,15 @@ function openChallenge(index) {
     game.running = false;
 
 
-    const challengeIndex =
-        questionOrder[index];
-
     game.questionIndex =
-        challengeIndex;
+        index;
 
 
     answerLocked = false;
 
 
     const challenge =
-        challenges[challengeIndex];
+        challenges[index];
 
 
     questionText.textContent =
@@ -1264,19 +1249,9 @@ function openChallenge(index) {
     feedback.textContent =
         "";
 
-    const shuffledOptions =
-        challenge.options.map(function(option, optionIndex) {
 
-            return {
-                text: option,
-                correct: optionIndex === challenge.correct
-            };
-
-        });
-
-
-    shuffleArray(shuffledOptions).forEach(
-        function(option) {
+    challenge.options.forEach(
+        function(option, optionIndex) {
 
             const button =
                 document.createElement(
@@ -1289,7 +1264,7 @@ function openChallenge(index) {
 
 
             button.textContent =
-                option.text;
+                option;
 
 
             button.addEventListener(
@@ -1298,8 +1273,7 @@ function openChallenge(index) {
 
                     answerChallenge(
                         index,
-                        challengeIndex,
-                        option.correct
+                        optionIndex
                     );
 
                 }
@@ -1323,9 +1297,8 @@ function openChallenge(index) {
 
 
 function answerChallenge(
-    blockIndex,
     questionIndex,
-    isCorrect
+    answerIndex
 ) {
 
     if (answerLocked) {
@@ -1360,7 +1333,10 @@ function answerChallenge(
     game.answered++;
 
 
-    if (isCorrect) {
+    if (
+        answerIndex ===
+        challenge.correct
+    ) {
 
         game.correct++;
 
@@ -1391,7 +1367,7 @@ function answerChallenge(
 
     const block =
         document.querySelector(
-            `.challenge-block[data-challenge="${blockIndex}"]`
+            `.challenge-block[data-challenge="${questionIndex}"]`
         );
 
 
