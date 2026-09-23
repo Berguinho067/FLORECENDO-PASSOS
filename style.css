@@ -25,7 +25,6 @@ button {
     cursor: pointer;
 }
 
-
 .screen {
     display: none;
 
@@ -36,7 +35,6 @@ button {
 .screen.active {
     display: flex;
 }
-
 
 #menu {
     justify-content: center;
@@ -86,7 +84,6 @@ button {
     font-size: 17px;
 }
 
-
 .hero-preview {
     height: 150px;
 
@@ -102,7 +99,6 @@ button {
     width: 55px;
     height: 100px;
 }
-
 
 .main-button,
 .secondary-button {
@@ -163,7 +159,6 @@ button {
     margin-top: 20px;
 }
 
-
 #instructions {
     justify-content: center;
     align-items: center;
@@ -217,7 +212,6 @@ button {
     font-weight: bold;
 }
 
-
 #gameScreen {
     flex-direction: column;
 
@@ -249,7 +243,6 @@ button {
     color: #f5ca45;
 }
 
-
 #game {
     position: relative;
 
@@ -265,17 +258,16 @@ button {
 #world {
     position: absolute;
 
-    width: 4500px;
+    width: 3300px;
     height: 100%;
 
     left: 0;
     top: 0;
 
     transform: translateX(0);
-       
+
     will-change: transform;
 }
-
 
 .sky {
     position: absolute;
@@ -286,7 +278,8 @@ button {
     width: 3300px;
     height: 100%;
 
-    background-image: url("https://thumbs.dreamstime.com/b/retro-pixelated-bookshelf-virtual-library-titles-spines-blur-readers-pixel-haven-retro-pixelated-bookshelf-314702477.jpg");
+    background-image:
+        url("https://thumbs.dreamstime.com/b/retro-pixelated-bookshelf-virtual-library-titles-spines-blur-readers-pixel-haven-retro-pixelated-bookshelf-314702477.jpg");
 
     background-repeat: repeat-x;
 
@@ -301,44 +294,55 @@ button {
     pointer-events: none;
 }
 
-
 .ground {
     position: absolute;
+
     bottom: 0;
+
     height: 100px;
 
-    background-image: url("https://pics.craiyon.com/2023-10-24/65021e30663e4e1c9a8d7ae7e40e2f15.webp");
+    background-image:
+        url("https://pics.craiyon.com/2023-10-24/65021e30663e4e1c9a8d7ae7e40e2f15.webp");
+
     background-repeat: repeat;
+
     background-position: center;
+
     background-size: 180px 100px;
 
     border-top: 12px solid #6b3f22;
+
     z-index: 5;
 }
 
 .ground-1 {
     left: 0;
-    width: 850px;
+
+    width: 900px;
 }
 
 .ground-2 {
-    left: 1050px;
-    width: 1700px;
+    left: 1020px;
+
+    width: 530px;
 }
 
 .ground-3 {
-    left: 1850px;
-    width: 2550px;
+    left: 1700px;
+
+    width: 600px;
 }
 
 .ground-4 {
-    left: 2700px;
-    width: 3350px;
+    left: 2450px;
+
+    width: 600px;
 }
 
 .ground-5 {
-    left: 3500px;
-    width: 4400 px;
+    left: 3150px;
+
+    width: 150px;
 }
 
 .coin {
@@ -435,7 +439,6 @@ button {
             translateY(-10px);
     }
 }
-
 .enemy {
     position: absolute;
 
@@ -444,36 +447,27 @@ button {
     width: 70px;
     height: 65px;
 
+    background-image:
+        url("monstro_transparente.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: contain;
+
+    image-rendering: pixelated;
+
     z-index: 15;
 
     animation:
         enemyMove 1.4s infinite alternate;
 
-    overflow: hidden;
-
-    background: transparent;
-
     border: none;
 
     box-shadow: none;
-}
 
-.enemy-image {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-
-    image-rendering: pixelated;
-
-    z-index: 20;
+    overflow: visible;
 }
 
 .enemy[data-x="800"] {
@@ -490,6 +484,16 @@ button {
 
 .enemy[data-x="2650"] {
     left: 2650px;
+}
+
+.enemy.defeated {
+    animation: none;
+
+    opacity: 0.45;
+
+    transform:
+        translateY(18px)
+        scaleY(0.65);
 }
 
 @keyframes enemyMove {
@@ -518,13 +522,17 @@ button {
     justify-content: center;
     align-items: center;
 
-    background-image: url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
+    background-image:
+        url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
 
     background-size: contain;
+
     background-position: center;
+
     background-repeat: no-repeat;
 
     border: none;
+
     box-shadow: none;
 
     color: transparent;
@@ -536,9 +544,8 @@ button {
     cursor: pointer;
 
     animation:
-challengeMove 0.8s infinite alternate;
+        challengeMove 0.8s infinite alternate;
 }
-
 
 .challenge-block[data-x="600"] {
     left: 600px;
@@ -557,10 +564,13 @@ challengeMove 0.8s infinite alternate;
 }
 
 .challenge-block.collected {
-    background-image: url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
+    background-image:
+        url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
 
     background-size: contain;
+
     background-position: center;
+
     background-repeat: no-repeat;
 
     animation: none;
@@ -587,9 +597,11 @@ challengeMove 0.8s infinite alternate;
     position: absolute;
 
     left: 120px;
+
     bottom: 100px;
 
     width: 55px;
+
     height: 90px;
 
     z-index: 50;
@@ -714,9 +726,11 @@ challengeMove 0.8s infinite alternate;
     position: absolute;
 
     left: 3180px;
+
     bottom: 100px;
 
     width: 90px;
+
     height: 145px;
 
     background: #743f24;
@@ -766,9 +780,11 @@ challengeMove 0.8s infinite alternate;
     position: absolute;
 
     left: 3230px;
+
     bottom: 100px;
 
     width: 75px;
+
     height: 150px;
 
     z-index: 25;
@@ -901,6 +917,7 @@ challengeMove 0.8s infinite alternate;
     position: absolute;
 
     left: 3070px;
+
     bottom: 290px;
 
     padding:
@@ -948,6 +965,7 @@ challengeMove 0.8s infinite alternate;
 .question-box,
 .message-box {
     width: 90%;
+
     max-width: 650px;
 
     max-height: 90vh;
@@ -969,6 +987,7 @@ challengeMove 0.8s infinite alternate;
 
 .brain-icon {
     width: 55px;
+
     height: 45px;
 
     margin:
@@ -1022,6 +1041,7 @@ challengeMove 0.8s infinite alternate;
     font-weight: bold;
 
     transition:
+
         background 0.15s,
         transform 0.1s;
 }
@@ -1061,6 +1081,7 @@ challengeMove 0.8s infinite alternate;
 
 #victory {
     justify-content: center;
+
     align-items: center;
 
     overflow-y: auto;
@@ -1076,6 +1097,7 @@ challengeMove 0.8s infinite alternate;
 
 .victory-box {
     width: 90%;
+
     max-width: 650px;
 
     padding: 30px;
@@ -1117,6 +1139,7 @@ challengeMove 0.8s infinite alternate;
     position: relative;
 
     width: 100px;
+
     height: 150px;
 
     margin:
@@ -1133,6 +1156,7 @@ challengeMove 0.8s infinite alternate;
 
 .teacher-big .teacher-body {
     left: 15px;
+
     top: 78px;
 }
 
@@ -1150,6 +1174,7 @@ challengeMove 0.8s infinite alternate;
     display: inline-block;
 
     width: 15px;
+
     height: 15px;
 
     margin: 5px;
@@ -1197,11 +1222,13 @@ challengeMove 0.8s infinite alternate;
     position: fixed;
 
     bottom: 15px;
+
     left: 0;
 
     width: 100%;
 
     justify-content: space-around;
+
     align-items: center;
 
     z-index: 2000;
@@ -1211,6 +1238,7 @@ challengeMove 0.8s infinite alternate;
 
 #mobileControls button {
     width: 70px;
+
     height: 60px;
 
     background: #fff1bd;
@@ -1317,11 +1345,11 @@ challengeMove 0.8s infinite alternate;
 
     #mobileControls button {
         width: 65px;
+
         height: 55px;
 
         font-size: 18px;
     }
-
 }
 
 @media (max-height: 600px) {
@@ -1345,8 +1373,7 @@ challengeMove 0.8s infinite alternate;
 
         line-height: 1.3;
     }
-
-}
+}   
 
 button:focus-visible {
     outline:
@@ -1367,5 +1394,4 @@ button:focus-visible {
 
         transition-duration: 0.01ms !important;
     }
-
 }
