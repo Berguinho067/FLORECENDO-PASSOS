@@ -439,32 +439,29 @@ button {
             translateY(-10px);
     }
 }
+
 .enemy {
     position: absolute;
-
-    bottom: 100px;
 
     width: 70px;
     height: 65px;
 
+    bottom: 100px;
+
     background-image: url("monstro_transparente.png");
-
     background-repeat: no-repeat;
-
     background-position: center;
-
     background-size: contain;
 
     image-rendering: pixelated;
 
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+
     z-index: 15;
 
-    animation:
-        enemyMove 1.4s infinite alternate;
-
-    border: none;
-
-    box-shadow: none;
+    animation: enemyMove 1.4s infinite alternate;
 
     overflow: visible;
 }
@@ -487,24 +484,17 @@ button {
 
 .enemy.defeated {
     animation: none;
-
     opacity: 0.45;
-
-    transform:
-        translateY(18px)
-        scaleY(0.65);
+    transform: translateY(18px) scaleY(0.65);
 }
 
 @keyframes enemyMove {
-
     from {
-        transform:
-            translateX(-15px);
+        transform: translateX(-15px);
     }
 
     to {
-        transform:
-            translateX(15px);
+        transform: translateX(15px);
     }
 }
 
