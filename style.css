@@ -443,8 +443,8 @@ button {
 .enemy {
     position: absolute;
 
-    width: 70px;
-    height: 65px;
+    width: 100px;
+    height: 100px;
 
     bottom: 100px;
 
