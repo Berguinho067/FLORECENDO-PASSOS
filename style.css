@@ -582,31 +582,21 @@ button {
 
 #player {
 
-background-image: url("https://png.pngtree.com/png-clipart/20220228/original/pngtree-pixel-art-character-young-boy-with-backpack-png-image_7325574.png");
-
-background-size: contain;
-
-background-repeat: no-repeat;
-
-background-position: center;
-
-
+    
+    background-image: url("https://png.pngtree.com/png-clipart/20220228/original/pngtree-pixel-art-character-young-boy-with-backpack-png-image_7325574.png");
+    
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    
     position: absolute;
-
     left: 120px;
-
     bottom: 100px;
-
     width: 90px;
-
     height: 144px;
-
+    
     z-index: 50;
-
-    will-change:
-        left,
-        bottom;
-}
+    }
 
 
 #door {
