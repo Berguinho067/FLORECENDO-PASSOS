@@ -134,6 +134,15 @@ const challenges = [
     }
 ];
 
+function embaralharPerguntas() {
+    for (let i = perguntas.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [perguntas[i], perguntas[j]] =
+        [perguntas[j], perguntas[i]];
+    }
+}
+
 function createInitialGame() {
     return {
         running: false,
