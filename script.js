@@ -135,12 +135,26 @@ const challenges = [
 ];
 
 function embaralharPerguntas() {
-    for (let i = perguntas.length - 1; i > 0; i--) {
+
+    for (let i = challenges.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
 
-        [perguntas[i], perguntas[j]] =
-        [perguntas[j], perguntas[i]];
+        [challenges[i], challenges[j]] =
+        [challenges[j], challenges[i]];
     }
+
+    challenges.forEach(function(challenge) {
+        const respostaCorreta = challenge.options[challenge.correct];
+
+        for (let i = challenge.options.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+
+            [challenge.options[i], challenge.options[j]] =
+            [challenge.options[j], challenge.options[i]];
+        }
+
+        challenge.correct = challenge.options.indexOf(respostaCorreta);
+    });
 }
 
 function createInitialGame() {
@@ -330,6 +344,8 @@ function startGame() {
     }
 
     game = createInitialGame();
+
+    embaralharPerguntas();
 
     answerLocked = false;
 
