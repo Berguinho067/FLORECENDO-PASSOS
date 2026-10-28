@@ -279,7 +279,7 @@ button {
     height: 100%;
 
     background-image:
-        url("https://i.pinimg.com/originals/c9/46/27/c94627ca6c5147bc87157df09027ded3.gif");
+        url("FUNDO.PNG");
 
     background-repeat: repeat-x;
 
@@ -302,7 +302,7 @@ button {
     height: 100px;
 
     background-image:
-        url("https://static.vecteezy.com/ti/vetor-gratis/p1/7984367-fundo-de-ladrilhos-sem-costura-com-placas-de-metal-texturizadas-com-rebites-ilustracao-com-eclosao-retro-steampunk-estilo-vintage-vetor.jpg");
+        url("https://img.magnific.com/vetores-premium/o-fundo-da-parede-de-tijolo-do-ouro-tijolos-amarelos-texture-o-vetor-sem-emenda-do-teste-padrao_87543-194.jpg?semt=ais_hybrid&w=740&q=80");
 
     background-repeat: repeat;
 
@@ -310,7 +310,7 @@ button {
 
     background-size: 180px 100px;
 
-    border-top: 12px solid hsl(20, 2%, 30%);
+    border-top: 12px solid hwb(54 0% 0%);
 
     z-index: 5;
 }
