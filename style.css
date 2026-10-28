@@ -310,7 +310,7 @@ button {
 
     background-size: 180px 100px;
 
-    border-top: 12px solid hwb(54 0% 0%);
+    border-top: 12px solid rgb(240, 216, 4);
 
     z-index: 5;
 }
