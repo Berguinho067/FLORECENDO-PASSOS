@@ -833,7 +833,7 @@
 
         showLoseMessage(
             "VOCÊ PERDEU!",
-            "Você encostou na lateral de um monstro. A aventura será reiniciada."
+            "VOCÊ ENCOSTOU EM TIC TAC. TENTE RECUPERAR O TEMPO!"
         );
     }
 
@@ -849,7 +849,7 @@
 
         showLoseMessage(
             "VOCÊ CAIU!",
-            "Você pisou em um vazio do cenário. A aventura será reiniciada."
+            "VOCÊ CAIU DO MUNDO. TENTE DE NOVO E NÃO DESISTA!"
         );
     }
 
