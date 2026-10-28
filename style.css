@@ -42,10 +42,10 @@ button {
 
     background:
         linear-gradient(
-            #55c8ef 0%,
-            #a9e8f5 65%,
-            #67b653 65%,
-            #67b653 100%
+            hsl(209, 100%, 55%) 0%,
+            #24f540 65%,
+            hsl(61, 88%, 52%) 65%,
+            hsl(0, 88%, 53%) 100%
         );
 }
 
@@ -57,7 +57,7 @@ button {
 
     text-align: center;
 
-    background: #fff1bd;
+    background: hwb(0 100% 0%);
 
     border: 8px solid #302344;
 
