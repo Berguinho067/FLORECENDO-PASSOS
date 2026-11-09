@@ -283,14 +283,13 @@ button {
     width: 3300px;
     height: 100%;
 
-    background-image:
-        url("FUNDO.PNG");
+    background-image: url("FUNDO.PNG");
 
     background-repeat: repeat-x;
 
     background-position: left top;
 
-    background-size: 1200px 100%;
+    background-size: 1650px 100%;
 
     image-rendering: pixelated;
 
