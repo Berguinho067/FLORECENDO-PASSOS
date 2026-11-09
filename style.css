@@ -39,15 +39,16 @@ button {
 #menu {
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+
     padding: 20px;
+    overflow-y: auto;
 
     background:
         linear-gradient(
-            rgba(65, 35, 20, 0.78),
-            rgba(65, 35, 20, 0.88)
+            rgba(245, 232, 206, 0.78),
+            rgba(245, 232, 206, 0.88)
         ),
-        url("FUNDO.PNG");
+        url("https://thumbs.dreamstime.com/b/retro-pixelated-bookshelf-virtual-library-titles-spines-blur-readers-pixel-haven-retro-pixelated-bookshelf-314702477.jpg");
 
     background-size: cover;
     background-position: center;
@@ -55,131 +56,49 @@ button {
 
 .menu-box {
     width: 100%;
-    max-width: 600px;
+    max-width: 440px;
+
     padding: 30px 25px;
 
     text-align: center;
 
-    background: #F3E3C3;
-    border: 6px solid #A66A32;
-    border-radius: 18px;
+    background: #F5E8CE;
 
-    box-shadow:
-        0 0 0 5px #5A321E,
-        0 12px 25px rgba(0, 0, 0, 0.45);
-}
+    border: 5px solid #83B58B;
+    border-radius: 14px;
 
-.menu-label {
-    margin-bottom: 10px;
-
-    color: #8B4513;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 3px;
+    box-shadow: 0 8px 18px rgba(63, 83, 104, 0.18);
 }
 
 .menu-box h1 {
-    margin: 10px 0;
+    margin-bottom: 15px;
 
-    color: #6B351B;
-    font-size: clamp(30px, 6vw, 48px);
+    color: #3F5368;
+
+    font-size: clamp(30px, 6vw, 46px);
     font-weight: bold;
 
-    text-shadow: 3px 3px #D9A441;
+    line-height: 1.2;
 }
 
 .menu-box h1 span {
     display: block;
-    color: #A52A2A;
-}
 
-.subtitle {
-    margin: 15px 0;
+    color: #6FA8D6;
 
-    color: #704214;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.hero-preview {
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 190px;
-    margin: 20px 0;
-
-    background: #E8D0A3;
-    border: 4px solid #C28A3D;
-    border-radius: 12px;
-
-    overflow: hidden;
-}
-
-.magic-book {
-    position: absolute;
-
-    width: 130px;
-    height: 100px;
-
-    background: #A52A2A;
-    border: 5px solid #D9A441;
-    border-radius: 8px;
-
-    transform: rotate(-8deg);
-    box-shadow: 5px 5px 0 #6B351B;
-}
-
-.book-symbol {
-    color: #F8D878;
-    font-size: 45px;
+    margin-top: 5px;
 }
 
 .menu-character {
-    position: relative;
-    z-index: 2;
+    display: block;
 
-    width: 110px;
-    height: 110px;
+    width: 125px;
+    height: 125px;
+
+    margin: 15px auto 25px;
 
     object-fit: contain;
     image-rendering: pixelated;
-
-    animation: menuCharacterFloat 2s ease-in-out infinite;
-}
-
-@keyframes menuCharacterFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-.sparkle {
-    position: absolute;
-
-    color: #C28A3D;
-    font-size: 25px;
-}
-
-.sparkle-one {
-    top: 25px;
-    left: 20%;
-}
-
-.sparkle-two {
-    bottom: 25px;
-    right: 20%;
-}
-
-.sparkle-three {
-    top: 35px;
-    right: 15%;
 }
 
 .main-button,
@@ -187,78 +106,76 @@ button {
     display: block;
 
     width: 85%;
-    max-width: 300px;
+    max-width: 290px;
 
-    margin: 12px auto;
+    margin: 15px auto;
     padding: 15px;
 
     font-family: "Courier New", monospace;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
 
     cursor: pointer;
-    border-radius: 10px;
 
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 9px;
+
+    transition: transform 0.2s, filter 0.2s;
 }
 
 .main-button {
-    color: #FFF4D6;
+    color: #FFFFFF;
 
-    background: #A52A2A;
-    border: 4px solid #6B351B;
+    background: #83B58B;
 
-    box-shadow: 0 5px 0 #5A321E;
+    border: 3px solid #5F8F68;
+
+    box-shadow: 0 4px 0 #5F8F68;
 }
 
 .secondary-button {
-    color: #6B351B;
+    color: #FFFFFF;
 
-    background: #D9A441;
-    border: 4px solid #A66A32;
+    background: #6FA8D6;
 
-    box-shadow: 0 5px 0 #8B4513;
+    border: 3px solid #5087B5;
+
+    box-shadow: 0 4px 0 #5087B5;
 }
 
 .main-button:hover,
 .secondary-button:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.08);
+    transform: translateY(-2px);
+    filter: brightness(1.04);
 }
 
 .main-button:active,
 .secondary-button:active {
-    transform: translateY(3px);
+    transform: translateY(2px);
     box-shadow: none;
 }
 
-#bestScore {
-    margin-top: 20px;
-
-    color: #704214;
-    font-size: 14px;
-    font-weight: bold;
+.menu-detail {
+    color: #D98282;
 }
 
 @media (max-width: 600px) {
-    .menu-box {
-        padding: 20px 15px;
-    }
 
-    .hero-preview {
-        height: 150px;
+    .menu-box {
+        padding: 22px 15px;
     }
 
     .menu-character {
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
     }
 
     .main-button,
     .secondary-button {
         width: 100%;
     }
+
 }
+
 
 .panel {
     width: 90%;
