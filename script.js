@@ -42,7 +42,7 @@
     const WORLD_WIDTH = 3300;
     const GROUND_HEIGHT = 100;
 
-    const PLAYER_WIDTH = 55;
+    const PLAYER_WIDTH = 90;
     const PLAYER_HEIGHT = 90;
 
     const ENEMY_WIDTH = 70;
@@ -921,15 +921,15 @@
 
                 const blockLeft =
                     blockX;
-
+                
                 const blockRight =
-                    blockX + 55;
-
+                    blockX + 80;
+                
                 const blockBottom =
                     155;
-
+                
                 const blockTop =
-                    blockBottom + 55;
+                    blockBottom + 70;
 
                 const playerLeft =
                     game.x;
