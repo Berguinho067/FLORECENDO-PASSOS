@@ -824,7 +824,7 @@ button {
     width: 600px;
     min-height: 300px;
 
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1399,4 +1399,9 @@ button:focus-visible {
         padding: 20px;
     }
 
+}
+
+#questionModal.show,
+#messageModal.show {
+    display: flex;
 }
