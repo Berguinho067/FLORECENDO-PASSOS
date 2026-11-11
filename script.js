@@ -14,7 +14,7 @@
     const world = document.getElementById("world");
 
     const scoreElement = document.getElementById("score");
-    const questionsElement = document.getElementById("questions");
+    const questionsElement = document.getElementById("challenges");
 
     const questionModal = document.getElementById("questionModal");
     const questionText = document.getElementById("questionText");
