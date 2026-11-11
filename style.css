@@ -1275,177 +1275,128 @@ button:focus-visible {
     }
 }
 
-.hud-panel {
-    background-image: url("HUD(2).PNG") !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: 100% 100% !important;
+.image-button {
+    display: block;
 
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 35px 45px;
-
-    color: #302344;
-
-    position: relative;
-    z-index: 10;
-}
-
-.menu-box.hud-panel {
-    width: min(90vw, 440px);
-    min-height: 420px;
-
-    padding: 45px 35px;
-
-    gap: 15px;
-}
-
-.panel.hud-panel {
-    width: min(90vw, 650px);
-    min-height: 450px;
-
-    padding: 40px 55px;
-
-    gap: 15px;
-}
-
-.question-box.hud-panel {
-    width: min(90vw, 600px);
-    min-height: 420px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 40px 50px;
-
-    gap: 12px;
-}
-
-.message-box.hud-panel {
-    width: min(90vw, 550px);
-    min-height: 350px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 40px 45px;
-
-    gap: 15px;
-}
-
-.victory-box.hud-panel {
-    width: min(90vw, 600px);
-    min-height: 500px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 40px 45px;
-
-    gap: 12px;
-}
-
-.hud-panel h1,
-.hud-panel h2,
-.hud-panel p {
-    max-width: 100%;
-
-    overflow-wrap: break-word;
-
-    text-align: center;
-}
-
-.hud-panel button {
-    position: relative;
-    z-index: 11;
+    width: 200px;
+    height: 70px;
 
     max-width: 100%;
+
+    margin: 15px auto;
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, filter 0.2s;
 }
 
-#answers {
+.image-button img {
+    display: block;
+
     width: 100%;
-    max-width: 400px;
+    height: 100%;
 
-    display: grid;
-    grid-template-columns: 1fr;
+    object-fit: contain;
 
-    gap: 10px;
+    image-rendering: pixelated;
+}
+
+.image-button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.96);
+}
+
+.image-button:focus-visible {
+    outline: 4px solid #6FA8D6;
+    outline-offset: 4px;
+}
+
+/* ================= BOTÕES COM IMAGENS ================= */
+
+.image-button {
+    display: block;
+
+    width: 200px;
+    height: 70px;
+
+    max-width: 100%;
+
+    margin: 15px auto;
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.image-button img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+.image-button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.96);
+}
+
+.image-button:focus-visible {
+    outline: 4px solid #6FA8D6;
+    outline-offset: 4px;
 }
 
 @media (max-width: 600px) {
 
-    .hud-panel {
-        padding: 25px 22px;
+    .image-button {
+        width: 180px;
+        height: 60px;
     }
 
-    .menu-box.hud-panel {
-        width: 90vw;
-        min-height: 350px;
+    #hud {
+        gap: 5px;
+
+        padding: 0 5px;
+
+        font-size: 11px;
     }
 
-    .panel.hud-panel {
-        width: 92vw;
-        min-height: 400px;
-
-        padding: 25px 30px;
+    .hud-item {
+        gap: 3px;
     }
 
-    .question-box.hud-panel {
-        width: 92vw;
-        min-height: 350px;
+    .question-box,
+    .message-box {
+        width: 95%;
 
-        padding: 25px 25px;
+        max-width: 450px;
+
+        padding: 20px;
     }
 
-    .message-box.hud-panel {
-        width: 92vw;
-        min-height: 300px;
-
-        padding: 25px;
-    }
-
-    .victory-box.hud-panel {
-        width: 92vw;
-        min-height: 400px;
-
-        padding: 25px;
-    }
-}
-
-#playButton img,
-#instructionsButton img,
-#backButton img,
-#restartButton img,
-#messageRestart img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-#playButton,
-#instructionsButton,
-#backButton,
-#restartButton,
-#messageRestart {
-    width: 180px;
-    height: 70px;
-    padding: 0;
-    overflow: hidden;
-    border: none;
-    background: transparent;
-    cursor: pointer;
 }
