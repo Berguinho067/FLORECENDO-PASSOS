@@ -45,8 +45,8 @@
     const PLAYER_WIDTH = 90;
     const PLAYER_HEIGHT = 90;
 
-    const ENEMY_WIDTH = 70;
-    const ENEMY_HEIGHT = 65;
+    const ENEMY_WIDTH = 90;
+    const ENEMY_HEIGHT = 90;
 
     const COIN_WIDTH = 35;
     const COIN_HEIGHT = 45;
@@ -214,6 +214,8 @@
     document.addEventListener(
         "keydown",
         function(event) {
+
+            console.log("Tecla pressionada:", event.key);
 
             if (
                 event.key === "ArrowLeft" ||
@@ -812,25 +814,18 @@
 
     function loseLife() {
 
-        if (!game.running) {
+        if (!game.running || game.dead) {
             return;
         }
-
-        if (
-            typeof game.lives !==
-            "number"
-        ) {
-            game.lives = 1;
-        }
-
+    
         game.lives--;
-
+    
         if (game.lives < 0) {
             game.lives = 0;
         }
-
+    
         updateHUD();
-
+    
         showLoseMessage(
             "VOCÊ PERDEU!",
             "VOCÊ ENCOSTOU EM TIC TAC. TENTE RECUPERAR O TEMPO!"
@@ -839,39 +834,32 @@
 
     function fallDown() {
 
-        if (!game.running) {
+        if (!game.running || game.dead) {
             return;
         }
-
-        game.dead = true;
-
-        game.running = false;
-
+    
         showLoseMessage(
             "VOCÊ CAIU!",
             "VOCÊ CAIU DO MUNDO. TENTE DE NOVO E NÃO DESISTA!"
         );
     }
 
-    function showLoseMessage(
-        title,
-        text
-    ) {
-
-        game.running = false;
-
-        keys.left = false;
-        keys.right = false;
-
-        messageTitle.textContent =
-            title;
-
-        messageText.textContent =
-            text;
-
-        messageModal.classList.add(
-            "show"
-        );
+    function showLoseMessage(title, text) {
+        if (game.dead) {
+            return;
+        }
+    
+        game.dead = true;
+    
+        stopGame();
+    
+        questionModal.classList.remove("show");
+    
+        messageTitle.textContent = title;
+    
+        messageText.textContent = text;
+    
+        messageModal.classList.add("show");
     }
 
     function closeMessage() {
