@@ -414,39 +414,32 @@
         if (!game.running) {
             return;
         }
-
-        const delta =
-            Math.min(
-                (timestamp - lastTime) / 16.666,
-                2
-            );
-
+    
+        const delta = Math.min(
+            (timestamp - lastTime) / 16.666,
+            2
+        );
+    
         lastTime = timestamp;
-
+    
         updatePlayer(delta);
-
+    
         if (!game.running) {
             return;
         }
-
+    
         checkCoins();
-
         checkEnemies();
-
+    
         if (!game.running) {
             return;
         }
-
+    
         checkChallenges();
-
         checkFinish();
-
         updateCamera();
-
-        animationFrame =
-            requestAnimationFrame(
-                gameLoop
-            );
+    
+        animationFrame = requestAnimationFrame(gameLoop);
     }
 
     function updatePlayer(delta) {
