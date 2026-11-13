@@ -592,8 +592,8 @@ button {
     position: absolute;
     left: 120px;
     bottom: 84px;
-    width: 300px;
-    height: 300px;
+    width: 120px;
+    height: 120px;
 
     z-index: 50;
 }
