@@ -583,7 +583,7 @@ button {
 }
 
 #player {
-    background-image: url("GAROTO.GIF");
+    background-image: url("garoto.GIF");
 
     background-size: contain;
     background-repeat: no-repeat;
@@ -1328,8 +1328,6 @@ button:focus-visible {
     outline: 4px solid #6FA8D6;
     outline-offset: 4px;
 }
-
-/* ================= BOTÕES COM IMAGENS ================= */
 
 .image-button {
     display: block;
