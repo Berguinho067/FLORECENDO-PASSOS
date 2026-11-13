@@ -14,7 +14,7 @@
     const world = document.getElementById("world");
 
     const scoreElement = document.getElementById("score");
-    const questionsElement = document.getElementById("questions");
+    const questionsElement = document.getElementById("challenges");
 
     const questionModal = document.getElementById("questionModal");
     const questionText = document.getElementById("questionText");
@@ -45,8 +45,13 @@
     const PLAYER_WIDTH = 90;
     const PLAYER_HEIGHT = 90;
 
+<<<<<<< HEAD
     const ENEMY_WIDTH = 100;
     const ENEMY_HEIGHT = 100;
+=======
+    const ENEMY_WIDTH = 90;
+    const ENEMY_HEIGHT = 90;
+>>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
 
     const COIN_WIDTH = 35;
     const COIN_HEIGHT = 45;
@@ -214,6 +219,8 @@
     document.addEventListener(
         "keydown",
         function(event) {
+
+            console.log("Tecla pressionada:", event.key);
 
             if (
                 event.key === "ArrowLeft" ||
@@ -798,25 +805,18 @@ function checkEnemies() {
 
     function loseLife() {
 
-        if (!game.running) {
+        if (!game.running || game.dead) {
             return;
         }
-
-        if (
-            typeof game.lives !==
-            "number"
-        ) {
-            game.lives = 1;
-        }
-
+    
         game.lives--;
-
+    
         if (game.lives < 0) {
             game.lives = 0;
         }
-
+    
         updateHUD();
-
+    
         showLoseMessage(
             "VOCÊ PERDEU!",
             "VOCÊ ENCOSTOU EM TIC TAC. TENTE RECUPERAR O TEMPO!"
@@ -825,14 +825,10 @@ function checkEnemies() {
 
     function fallDown() {
 
-        if (!game.running) {
+        if (!game.running || game.dead) {
             return;
         }
-
-        game.dead = true;
-
-        game.running = false;
-
+    
         showLoseMessage(
             "VOCÊ CAIU!",
             "VOCÊ CAIU DO MUNDO. TENTE DE NOVO E NÃO DESISTA!"
@@ -840,6 +836,7 @@ function checkEnemies() {
     }
 
     function showLoseMessage(title, text) {
+<<<<<<< HEAD
 
         game.running = false;
         game.dead = true;
@@ -864,14 +861,122 @@ function checkEnemies() {
     
         messageModal.style.zIndex = "99999";
     
+=======
+        if (game.dead) {
+            return;
+        }
+    
+        game.dead = true;
+    
+        stopGame();
+    
+        questionModal.classList.remove("show");
+    
+        messageTitle.textContent = title;
+    
+        messageText.textContent = text;
+    
+>>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
         messageModal.classList.add("show");
     }
 
     function closeMessage() {
 
+<<<<<<< HEAD
         messageModal.classList.remove("show");
     
         messageModal.style.display = "none";
+=======
+        messageModal.classList.remove(
+            "show"
+        );
+    }
+
+    function checkChallenges() {
+
+        if (!game.running) {
+            return;
+        }
+
+        const blocks =
+            document.querySelectorAll(
+                ".challenge-block"
+            );
+
+        blocks.forEach(
+            function(block) {
+
+                if (
+                    block.dataset.completed ===
+                    "true"
+                ) {
+                    return;
+                }
+
+                const index =
+                    Number(
+                        block.dataset.challenge
+                    );
+
+                if (
+                    index !==
+                    game.answered
+                ) {
+                    return;
+                }
+
+                const blockX =
+                    Number(
+                        block.dataset.x
+                    );
+
+                const blockLeft =
+                    blockX;
+                
+                const blockRight =
+                    blockX + 80;
+                
+                const blockBottom =
+                    155;
+                
+                const blockTop =
+                    blockBottom + 70;
+
+                const playerLeft =
+                    game.x;
+
+                const playerRight =
+                    game.x +
+                    PLAYER_WIDTH;
+
+                const playerBottom =
+                    game.y;
+
+                const playerTop =
+                    game.y +
+                    PLAYER_HEIGHT;
+
+                const horizontal =
+                    playerLeft <
+                        blockRight &&
+                    playerRight >
+                        blockLeft;
+
+                const vertical =
+                    playerBottom <
+                        blockTop &&
+                    playerTop >
+                        blockBottom;
+
+                if (
+                    horizontal &&
+                    vertical
+                ) {
+                    openChallenge(index);
+                }
+            }
+        );
+>>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
     }
 
     function openChallenge(index) {

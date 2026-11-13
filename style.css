@@ -815,26 +815,32 @@ button {
         5px 5px 0 #302344;
 }
 
-#questionModal,
-#messageModal {
+#questionModal {
     position: fixed;
 
     inset: 0;
 
+    width: 100%;
+    height: 100%;
+
     display: none;
 
-    justify-content: center;
     align-items: center;
-
-    background:
-        rgba(25, 20, 45, 0.88);
-
-    z-index: 5000;
+    justify-content: center;
 
     padding: 20px;
+
+    background-color: rgba(29, 24, 51, 0.75);
+
+    z-index: 4000;
+}
+
+#messageModal.show {
+    display: flex;
 }
 
 #questionModal.show,
+
 #messageModal.show {
     display: flex;
 }
@@ -889,12 +895,15 @@ button {
 
 #questionText {
     color: #302344;
-
-    font-size: 20px;
-
-    line-height: 1.5;
-
+    font-size: 22px;
+    text-align: center;
     margin-bottom: 20px;
+}
+
+#questionModal button {
+    position: relative;
+    z-index: 2;
+    margin: 8px;
 }
 
 #answers {
@@ -1271,4 +1280,135 @@ button:focus-visible {
 
         transition-duration: 0.01ms !important;
     }
+}
+
+.image-button {
+    display: block;
+
+    width: 200px;
+    height: 70px;
+
+    max-width: 100%;
+
+    margin: 15px auto;
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.image-button img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+.image-button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.96);
+}
+
+.image-button:focus-visible {
+    outline: 4px solid #6FA8D6;
+    outline-offset: 4px;
+}
+
+/* ================= BOTÕES COM IMAGENS ================= */
+
+.image-button {
+    display: block;
+
+    width: 200px;
+    height: 70px;
+
+    max-width: 100%;
+
+    margin: 15px auto;
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.image-button img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+.image-button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.96);
+}
+
+.image-button:focus-visible {
+    outline: 4px solid #6FA8D6;
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+
+    .image-button {
+        width: 180px;
+        height: 60px;
+    }
+
+    #hud {
+        gap: 5px;
+
+        padding: 0 5px;
+
+        font-size: 11px;
+    }
+
+    .hud-item {
+        gap: 3px;
+    }
+
+    .question-box,
+    .message-box {
+        width: 95%;
+
+        max-width: 450px;
+
+        padding: 20px;
+    }
+
+}
+
+#questionModal.show,
+#messageModal.show {
+    display: flex;
 }
