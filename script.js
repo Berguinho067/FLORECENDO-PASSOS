@@ -836,7 +836,6 @@ function checkEnemies() {
     }
 
     function showLoseMessage(title, text) {
-<<<<<<< HEAD
 
         game.running = false;
         game.dead = true;
@@ -861,7 +860,6 @@ function checkEnemies() {
     
         messageModal.style.zIndex = "99999";
     
-=======
         if (game.dead) {
             return;
         }
@@ -875,18 +873,16 @@ function checkEnemies() {
         messageTitle.textContent = title;
     
         messageText.textContent = text;
-    
->>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
+
         messageModal.classList.add("show");
     }
 
     function closeMessage() {
-
-<<<<<<< HEAD
+        
         messageModal.classList.remove("show");
     
         messageModal.style.display = "none";
-=======
+
         messageModal.classList.remove(
             "show"
         );
@@ -976,7 +972,7 @@ function checkEnemies() {
                 }
             }
         );
->>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
+
     }
 
     function openChallenge(index) {
@@ -1089,8 +1085,7 @@ function checkEnemies() {
             feedback.textContent =
                 "Essa não foi a resposta. Vamos continuar!";
 
-            feedback.style.color =
-                "#c56a20";
+            feedback.style.color = #c56a20;
         }
 
         const block =
