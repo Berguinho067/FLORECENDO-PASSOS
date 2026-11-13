@@ -45,8 +45,8 @@
     const PLAYER_WIDTH = 90;
     const PLAYER_HEIGHT = 90;
 
-    const ENEMY_WIDTH = 90;
-    const ENEMY_HEIGHT = 90;
+    const ENEMY_WIDTH = 100;
+    const ENEMY_HEIGHT = 100;
 
     const COIN_WIDTH = 35;
     const COIN_HEIGHT = 45;
@@ -409,42 +409,37 @@
         if (!game.running) {
             return;
         }
-
-        const delta =
-            Math.min(
-                (timestamp - lastTime) / 16.666,
-                2
-            );
-
+    
+        const delta = Math.min(
+            (timestamp - lastTime) / 16.666,
+            2
+        );
+    
         lastTime = timestamp;
-
+    
         updatePlayer(delta);
-
+    
         if (!game.running) {
             return;
         }
-
+    
         checkCoins();
-
         checkEnemies();
-
+    
         if (!game.running) {
             return;
         }
-
+    
         checkChallenges();
-
         checkFinish();
-
         updateCamera();
-
-        animationFrame =
-            requestAnimationFrame(
-                gameLoop
-            );
+    
+        animationFrame = requestAnimationFrame(gameLoop);
     }
 
     function updatePlayer(delta) {
+
+        game.previousY = game.y;
 
         let movement = 0;
 
@@ -504,12 +499,10 @@
             game.onGround = false;
         }
 
-        if (
-            game.y < -PLAYER_HEIGHT
-        ) {
+        if (game.y + PLAYER_HEIGHT < 0) {
 
             fallDown();
-
+        
             return;
         }
 
@@ -677,91 +670,77 @@
             );
     }
 
-    function checkEnemies() {
+  
+function checkEnemies() {
 
-        const enemies =
-            document.querySelectorAll(".enemy");
-
-        enemies.forEach(
-            function(enemy) {
-
-                if (
-                    enemy.dataset.defeated ===
-                    "true"
-                ) {
-                    return;
-                }
-
-                const enemyX =
-                    Number(enemy.dataset.x);
-
-                const enemyLeft =
-                    enemyX;
-
-                const enemyRight =
-                    enemyX +
-                    ENEMY_WIDTH;
-
-                const enemyBottom =
-                    GROUND_HEIGHT;
-
-                const enemyTop =
-                    enemyBottom +
-                    ENEMY_HEIGHT;
-
-                const playerLeft =
-                    game.x;
-
-                const playerRight =
-                    game.x +
-                    PLAYER_WIDTH;
-
-                const playerBottom =
-                    game.y;
-
-                const playerTop =
-                    game.y +
-                    PLAYER_HEIGHT;
-
-                const horizontalCollision =
-                    playerLeft <
-                        enemyRight &&
-                    playerRight >
-                        enemyLeft;
-
-                const verticalCollision =
-                    playerBottom <
-                        enemyTop &&
-                    playerTop >
-                        enemyBottom;
-
-                if (
-                    !horizontalCollision ||
-                    !verticalCollision
-                ) {
-                    return;
-                }
-
-                const stompCollision =
-                    game.velocityY <= 0 &&
-
-                    playerBottom >=
-                        enemyTop - 25 &&
-
-                    playerBottom <=
-                        enemyTop + 15;
-
-                if (stompCollision) {
-
-                    defeatEnemy(enemy);
-
-                    return;
-                }
-
-                loseLife();
-            }
-        );
+    if (!game.running) {
+        return;
     }
+
+    const enemies = document.querySelectorAll(".enemy");
+
+    enemies.forEach(function(enemy) {
+
+        if (!game.running) {
+            return;
+        }
+
+        if (enemy.dataset.defeated === "true") {
+            return;
+        }
+
+        const enemyX = Number(enemy.dataset.x);
+
+        const enemyLeft = enemyX;
+        const enemyRight = enemyX + ENEMY_WIDTH;
+
+        const enemyBottom = GROUND_HEIGHT;
+        const enemyTop = enemyBottom + ENEMY_HEIGHT;
+
+        const playerLeft = game.x;
+        const playerRight = game.x + PLAYER_WIDTH;
+
+        const playerBottom = game.y;
+        const playerTop = game.y + PLAYER_HEIGHT;
+
+        const horizontalCollision =
+            playerLeft < enemyRight &&
+            playerRight > enemyLeft;
+
+        const verticalCollision =
+            playerBottom < enemyTop &&
+            playerTop > enemyBottom;
+
+        if (!horizontalCollision || !verticalCollision) {
+            return;
+        }
+
+        const previousBottom = game.previousY;
+
+        const stompCollision =
+            game.velocityY < 0 &&
+            previousBottom >= enemyTop &&
+            playerBottom <= enemyTop;
+
+        if (stompCollision) {
+
+            game.y = enemyTop;
+
+            defeatEnemy(enemy);
+
+        } else if (game.velocityY > 0) {
+
+            return;
+
+        } else {
+
+            loseLife();
+
+        }
+
+    });
+
+}
 
     function defeatEnemy(enemy) {
 
@@ -845,24 +824,49 @@
     }
 
     function showLoseMessage(title, text) {
-        if (game.dead) {
-            return;
+
+            if (!game.running || game.dead) {
+                return;
+            }
+        
+            game.running = false;
+            game.dead = true;
+        
+            keys.left = false;
+            keys.right = false;
+        
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+        
+            questionModal.classList.remove("show");
+        
+            messageTitle.textContent = title;
+            messageText.textContent = text;
+        
+            messageModal.style.position = "fixed";
+            messageModal.style.inset = "0";
+            messageModal.style.width = "100%";
+            messageModal.style.height = "100%";
+        
+            messageModal.style.display = "flex";
+            messageModal.style.alignItems = "center";
+            messageModal.style.justifyContent = "center";
+        
+            messageModal.style.backgroundColor =
+                "rgba(29, 24, 51, 0.75)";
+        
+            messageModal.style.zIndex = "99999";
+        
+            messageModal.classList.add("show");
         }
-    
-        game.dead = true;
-    
-        stopGame();
-    
-        questionModal.classList.remove("show");
-    
-        messageTitle.textContent = title;
-    
-        messageText.textContent = text;
-    
-        messageModal.classList.add("show");
-    }
 
     function closeMessage() {
+        
+        messageModal.classList.remove("show");
+    
+        messageModal.style.display = "none";
 
         messageModal.classList.remove(
             "show"
@@ -953,6 +957,7 @@
                 }
             }
         );
+
     }
 
     function openChallenge(index) {
@@ -1065,8 +1070,7 @@
             feedback.textContent =
                 "Essa não foi a resposta. Vamos continuar!";
 
-            feedback.style.color =
-                "#c56a20";
+            feedback.style.color = "#c56a20";
         }
 
         const block =
