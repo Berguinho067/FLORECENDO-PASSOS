@@ -825,45 +825,42 @@ function checkEnemies() {
 
     function showLoseMessage(title, text) {
 
-        game.running = false;
-        game.dead = true;
-    
-        keys.left = false;
-        keys.right = false;
-    
-        messageTitle.textContent = title;
-        messageText.textContent = text;
-    
-        messageModal.style.position = "fixed";
-        messageModal.style.inset = "0";
-        messageModal.style.width = "100%";
-        messageModal.style.height = "100%";
-    
-        messageModal.style.display = "flex";
-        messageModal.style.alignItems = "center";
-        messageModal.style.justifyContent = "center";
-    
-        messageModal.style.backgroundColor =
-            "rgba(29, 24, 51, 0.75)";
-    
-        messageModal.style.zIndex = "99999";
-    
-        if (game.dead) {
-            return;
+            if (!game.running || game.dead) {
+                return;
+            }
+        
+            game.running = false;
+            game.dead = true;
+        
+            keys.left = false;
+            keys.right = false;
+        
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+        
+            questionModal.classList.remove("show");
+        
+            messageTitle.textContent = title;
+            messageText.textContent = text;
+        
+            messageModal.style.position = "fixed";
+            messageModal.style.inset = "0";
+            messageModal.style.width = "100%";
+            messageModal.style.height = "100%";
+        
+            messageModal.style.display = "flex";
+            messageModal.style.alignItems = "center";
+            messageModal.style.justifyContent = "center";
+        
+            messageModal.style.backgroundColor =
+                "rgba(29, 24, 51, 0.75)";
+        
+            messageModal.style.zIndex = "99999";
+        
+            messageModal.classList.add("show");
         }
-    
-        game.dead = true;
-    
-        stopGame();
-    
-        questionModal.classList.remove("show");
-    
-        messageTitle.textContent = title;
-    
-        messageText.textContent = text;
-
-        messageModal.classList.add("show");
-    }
 
     function closeMessage() {
         
@@ -1073,7 +1070,7 @@ function checkEnemies() {
             feedback.textContent =
                 "Essa não foi a resposta. Vamos continuar!";
 
-            feedback.style.color = #c56a20;
+            feedback.style.color = "#c56a20";
         }
 
         const block =
