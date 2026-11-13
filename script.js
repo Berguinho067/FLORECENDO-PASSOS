@@ -45,13 +45,8 @@
     const PLAYER_WIDTH = 90;
     const PLAYER_HEIGHT = 90;
 
-<<<<<<< HEAD
     const ENEMY_WIDTH = 100;
     const ENEMY_HEIGHT = 100;
-=======
-    const ENEMY_WIDTH = 90;
-    const ENEMY_HEIGHT = 90;
->>>>>>> 28c53b5363e32119ba7252ca0d8bb131c27dba34
 
     const COIN_WIDTH = 35;
     const COIN_HEIGHT = 45;
