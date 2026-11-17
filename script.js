@@ -267,6 +267,39 @@
         screen.classList.add("active");
     }
 
+    function ativarTelaHorizontal() {
+
+        if (!window.matchMedia("(max-width: 700px)").matches) {
+            return;
+        }
+    
+        function bloquearOrientacao() {
+    
+            if (screen.orientation && screen.orientation.lock) {
+    
+                return screen.orientation.lock("landscape")
+                    .catch(function(error) {
+                        console.log("Não foi possível girar a tela:", error);
+                    });
+            }
+        }
+    
+        if (document.fullscreenElement) {
+    
+            bloquearOrientacao();
+    
+        } else if (document.documentElement.requestFullscreen) {
+    
+            document.documentElement.requestFullscreen()
+                .then(function() {
+                    return bloquearOrientacao();
+                })
+                .catch(function(error) {
+                    console.log("Não foi possível ativar tela cheia:", error);
+                });
+        }
+    }
+    
     if (instructionsButton) {
         instructionsButton.addEventListener(
             "click",
@@ -334,64 +367,50 @@
         );
     }
 
-    function startGame() {
+    
+function startGame() {
 
-        if (animationFrame) {
+    if (animationFrame) {
 
-            cancelAnimationFrame(
-                animationFrame
-            );
+        cancelAnimationFrame(animationFrame);
 
-            animationFrame = null;
-        }
-
-        game = createInitialGame();
-
-        embaralharPerguntas();
-
-        answerLocked = false;
-
-        closeMessage();
-
-        questionModal.classList.remove(
-            "show"
-        );
-
-        resetCoins();
-
-        resetEnemies();
-
-        resetChallenges();
-
-        player.style.left =
-            game.x + "px";
-
-        player.style.bottom =
-            game.y + "px";
-
-        world.style.transform =
-            "translateX(0px)";
-
-        updateHUD();
-
-        showScreen(gameScreen);
-
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock("landscape").catch(function(error) {
-                console.log("Orientação não permitida pelo navegador:", error);
-            });
-        }
-
-        game.running = true;
-
-        lastTime =
-            performance.now();
-
-        animationFrame =
-            requestAnimationFrame(
-                gameLoop
-            );
+        animationFrame = null;
     }
+
+    game = createInitialGame();
+
+    embaralharPerguntas();
+
+    answerLocked = false;
+
+    closeMessage();
+
+    questionModal.classList.remove("show");
+
+    resetCoins();
+
+    resetEnemies();
+
+    resetChallenges();
+
+    player.style.left = game.x + "px";
+
+    player.style.bottom = game.y + "px";
+
+    world.style.transform = "translateX(0px)";
+
+    updateHUD();
+
+    showScreen(gameScreen);
+
+    ativarTelaHorizontal();
+
+    game.running = true;
+
+    lastTime = performance.now();
+
+    animationFrame = requestAnimationFrame(gameLoop);
+}
 
     function stopGame() {
 
