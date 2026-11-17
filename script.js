@@ -376,6 +376,12 @@
 
         showScreen(gameScreen);
 
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("landscape").catch(function(error) {
+                console.log("Orientação não permitida pelo navegador:", error);
+            });
+        }
+
         game.running = true;
 
         lastTime =

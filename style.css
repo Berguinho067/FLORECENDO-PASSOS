@@ -1544,32 +1544,32 @@ body {
     }
 }
 
-#leftControl {
-    background-image: url("SETA2.PNG");
+#mobileControls button {
+    width: 75px;
+    height: 70px;
+
+    background-color: #fff1bd;
+    border: 4px solid #302344;
+    border-radius: 10px;
+
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;
 
+    box-shadow: 4px 4px 0 #302344;
+
     font-size: 0;
     color: transparent;
+}
+
+#leftControl {
+    background-image: url("SETA2.PNG");
 }
 
 #rightControl {
     background-image: url("SETA1.PNG");
-    background-size: 85%;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    font-size: 0;
-    color: transparent;
 }
 
 #jumpControl {
     background-image: url("PULE.PNG");
-    background-size: 85%;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    font-size: 0;
-    color: transparent;
 }
