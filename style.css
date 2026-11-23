@@ -896,6 +896,9 @@ button {
     width: 200px;
     height: 280px;
     margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .final-score {
@@ -1219,14 +1222,15 @@ button:focus-visible {
     display: flex;
 }
 
-#teacher img {
+.teacher-big img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: bottom center;
+    object-position: center;
     image-rendering: pixelated;
 }
+
 body {
     width: 100%;
     height: 100%;
