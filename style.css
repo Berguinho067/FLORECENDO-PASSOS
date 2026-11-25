@@ -1,3 +1,40 @@
+#teacher {
+    position: absolute;
+    left: 3070px;
+    bottom: 100px;
+    width: 220px;
+    height: 300px;
+    z-index: 25;
+}
+
+#teacher img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    image-rendering: pixelated;
+}
+
+.teacher-big {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 280px;
+    margin: 20px auto;
+}
+
+.teacher-big img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    image-rendering: pixelated;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,11 +49,9 @@ body {
 
 body {
     overflow: hidden;
-
+    overscroll-behavior: none;
     background: #1d1833;
-
     font-family: "Courier New", monospace;
-
     image-rendering: pixelated;
 }
 
@@ -25,11 +60,16 @@ button {
     cursor: pointer;
 }
 
+button:focus-visible {
+    outline: 4px solid #ffffff;
+    outline-offset: 3px;
+}
+
 .screen {
     display: none;
-
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    height: 100dvh;
 }
 
 .screen.active {
@@ -39,7 +79,6 @@ button {
 #menu {
     justify-content: center;
     align-items: center;
-
     padding: 20px;
     overflow-y: auto;
 
@@ -48,7 +87,7 @@ button {
             rgba(245, 232, 206, 0.78),
             rgba(245, 232, 206, 0.88)
         ),
-        url(FUNDO.PNG);
+        url("FUNDO.PNG");
 
     background-size: cover;
     background-position: center;
@@ -57,13 +96,10 @@ button {
 .menu-box {
     width: 100%;
     max-width: 440px;
-
     padding: 30px 25px;
-
     text-align: center;
 
     background: #F5E8CE;
-
     border: 5px solid #83B58B;
     border-radius: 14px;
 
@@ -72,31 +108,23 @@ button {
 
 .menu-box h1 {
     margin-bottom: 15px;
-
     color: #3F5368;
-
     font-size: clamp(30px, 6vw, 46px);
     font-weight: bold;
-
     line-height: 1.2;
 }
 
 .menu-box h1 span {
     display: block;
-
-    color: #6FA8D6;
-
     margin-top: 5px;
+    color: #6FA8D6;
 }
 
 .menu-character {
     display: block;
-
     width: 125px;
     height: 125px;
-
     margin: 15px auto 25px;
-
     object-fit: contain;
     image-rendering: pixelated;
 }
@@ -104,10 +132,8 @@ button {
 .main-button,
 .secondary-button {
     display: block;
-
     width: 85%;
     max-width: 290px;
-
     margin: 15px auto;
     padding: 15px;
 
@@ -116,7 +142,6 @@ button {
     font-weight: bold;
 
     cursor: pointer;
-
     border-radius: 9px;
 
     transition: transform 0.2s, filter 0.2s;
@@ -124,21 +149,15 @@ button {
 
 .main-button {
     color: #FFFFFF;
-
     background: #83B58B;
-
     border: 3px solid #5F8F68;
-
     box-shadow: 0 4px 0 #5F8F68;
 }
 
 .secondary-button {
     color: #FFFFFF;
-
     background: #6FA8D6;
-
     border: 3px solid #5087B5;
-
     box-shadow: 0 4px 0 #5087B5;
 }
 
@@ -158,89 +177,96 @@ button {
     color: #D98282;
 }
 
-@media (max-width: 600px) {
+.image-button {
+    display: block;
+    width: 200px;
+    height: 70px;
+    max-width: 100%;
+    margin: 15px auto;
+    padding: 0;
 
-    .menu-box {
-        padding: 22px 15px;
-    }
+    background: transparent;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
 
-    .menu-character {
-        width: 100px;
-        height: 100px;
-    }
-
-    .main-button,
-    .secondary-button {
-        width: 100%;
-    }
-
+    transition: transform 0.2s, filter 0.2s;
 }
 
+.image-button img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.image-button:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.96);
+}
+
+.image-button:focus-visible {
+    outline: 4px solid #6FA8D6;
+    outline-offset: 4px;
+}
 
 .panel {
     width: 90%;
     max-width: 650px;
-
     padding: 30px;
 
     background: #fff1bd;
-
     border: 8px solid #302344;
 
-    box-shadow:
-        10px 10px 0 #302344;
+    box-shadow: 10px 10px 0 #302344;
 }
 
 .panel h2 {
-    text-align: center;
-
-    color: #d84455;
-
     margin-bottom: 25px;
-
+    color: #d84455;
+    text-align: center;
     font-size: 32px;
 }
 
 .instruction-list p {
-    color: #302344;
-
-    line-height: 1.6;
-
     margin-bottom: 12px;
+    color: #302344;
+    line-height: 1.6;
 }
 
 .instruction-list p::before {
     content: "> ";
-
     color: #d84455;
-
     font-weight: bold;
 }
 
 #gameScreen {
     flex-direction: column;
-
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
     background: #111;
 }
 
 #hud {
-    height: 60px;
-
     display: flex;
-
     justify-content: space-around;
     align-items: center;
 
+    height: 60px;
+    min-height: 60px;
+
     color: white;
-
     background: #302344;
-
     border-bottom: 5px solid #171126;
 
     font-size: 15px;
-
     z-index: 1000;
-
     user-select: none;
 }
 
@@ -248,35 +274,38 @@ button {
     color: #f5ca45;
 }
 
+.hud-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 #game {
     position: relative;
-
     width: 100%;
-
     height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
+    min-height: 0;
 
     overflow: hidden;
-
     background: #ccecf2;
+    touch-action: none;
 }
 
 #world {
     position: absolute;
+    top: 0;
+    left: 0;
 
     width: 3300px;
     height: 100%;
 
-    left: 0;
-    top: 0;
-
     transform: translateX(0);
-
     will-change: transform;
 }
 
 .sky {
     position: absolute;
-
     top: 0;
     left: 0;
 
@@ -284,73 +313,81 @@ button {
     height: 100%;
 
     background-image: url("FUNDO.PNG");
-
     background-repeat: no-repeat;
-
     background-position: center center;
-
     background-size: 100% 100%;
 
     image-rendering: pixelated;
-
     z-index: 0;
-
     pointer-events: none;
 }
 
 .ground {
     position: absolute;
-
     bottom: 0;
-
     height: 100px;
 
     background-image:
         url("https://img.magnific.com/vetores-premium/o-fundo-da-parede-de-tijolo-do-ouro-tijolos-amarelos-texture-o-vetor-sem-emenda-do-teste-padrao_87543-194.jpg?semt=ais_hybrid&w=740&q=80");
 
     background-repeat: repeat;
-
     background-position: center;
-
     background-size: 180px 100px;
 
     border-top: 12px solid rgb(240, 216, 4);
-
     z-index: 5;
 }
 
 .ground-1 {
     left: 0;
-
     width: 900px;
 }
 
 .ground-2 {
     left: 1020px;
-
     width: 530px;
 }
 
 .ground-3 {
     left: 1700px;
-
     width: 600px;
 }
 
 .ground-4 {
     left: 2450px;
-
     width: 600px;
 }
 
 .ground-5 {
     left: 3150px;
-
     width: 150px;
+}
+
+#player {
+    position: absolute;
+    left: 120px;
+    bottom: 100px;
+
+    width: 120px;
+    height: 120px;
+
+    z-index: 50;
+}
+
+#player img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    image-rendering: pixelated;
 }
 
 .coin {
     position: absolute;
+    bottom: 180px;
 
     width: 35px;
     height: 45px;
@@ -358,21 +395,13 @@ button {
     background-image: url("https://marketplace.canva.com/7GQdk/MAHHOE7GQdk/1/tl/canva-moeda%2C-moeda-de-ouro%2C-dinheiro%2C-moeda-pixelada%2C-moeda-de-jogo%2C-recompensa%2C-tesouro%2C-ouro%2C-%C3%ADcone-de-moeda%2C-dinheiro-de-jogo%2C-jogo-de-moedas%2C-dinheiro-pixelado%2C-moeda-retr%C3%B4%2C-design-de-moeda%2C-recompensa-de-jogo%2C-moeda-b%C3%B4nus%2C-moeda-de-arcade%2C-moeda-pixelada%2C-dinheiro-de-ouro%2C-%C3%ADcone-de-jogo-MAHHOE7GQdk.png");
 
     background-size: contain;
-
     background-repeat: no-repeat;
 
     border-radius: 50%;
-
     z-index: 40;
 
-    bottom: 180px;
-
-    animation:
-        coinMove 0.7s infinite alternate;
-
-    transition:
-        opacity 0.15s,
-        transform 0.15s;
+    animation: coinMove 0.7s infinite alternate;
+    transition: opacity 0.15s, transform 0.15s;
 }
 
 .coin[data-x="300"] {
@@ -405,50 +434,41 @@ button {
 
 .coin-inner {
     position: absolute;
+    top: 6px;
+    left: 8px;
 
     width: 9px;
     height: 24px;
-
-    top: 6px;
-    left: 8px;  
 
     border-radius: 50%;
 }
 
 .coin.collected {
     opacity: 0;
-
     pointer-events: none;
-
     animation: none;
 
-    transform:
-        translateY(-20px)
-        scale(0.4);
+    transform: translateY(-20px) scale(0.4);
 }
 
 @keyframes coinMove {
-
     from {
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 
     to {
-        transform:
-            translateY(-10px);
+        transform: translateY(-10px);
     }
 }
 
 .enemy {
     position: absolute;
+    bottom: 100px;
 
     width: 100px;
     height: 100px;
 
-    bottom: 100px;
-
-    background-image: url("TIC\ TAC.PNG");
+    background-image: url("TIC%20TAC.PNG");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -460,10 +480,9 @@ button {
     border-radius: 0;
 
     z-index: 15;
+    overflow: visible;
 
     animation: enemyMove 1.4s infinite alternate;
-
-    overflow: visible;
 }
 
 .enemy[data-x="800"] {
@@ -500,40 +519,32 @@ button {
 
 .challenge-block {
     position: absolute;
-
     bottom: 155px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 80px;
     height: 70px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
 
     background-image:
         url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
 
     background-size: contain;
-
     background-position: center;
-
     background-repeat: no-repeat;
 
     border: none;
-
     box-shadow: none;
 
     color: transparent;
-
     font-size: 0;
 
     z-index: 30;
-
     cursor: pointer;
 
-    animation:
-        challengeMove 0.8s infinite alternate;
+    animation: challengeMove 0.8s infinite alternate;
 }
 
 .challenge-block[data-x="600"] {
@@ -557,184 +568,100 @@ button {
         url("https://cdn.pixabay.com/photo/2025/08/08/15/48/pixel-art-9762954_640.png");
 
     background-size: contain;
-
     background-position: center;
-
     background-repeat: no-repeat;
 
     animation: none;
-
     color: transparent;
-
     opacity: 0.55;
 }
 
 @keyframes challengeMove {
-
     from {
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 
     to {
-        transform:
-            translateY(-6px);
+        transform: translateY(-6px);
     }
-}
-
-#player {
-    position: absolute;
-
-    left: 120px;
-    bottom: 100px;
-
-    width: 120px;
-    height: 1200px;
-
-    z-index: 50;
-}
-
-#player img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-    object-position: bottom center;
-
-    image-rendering: pixelated;
 }
 
 #door {
     position: absolute;
-
     left: 3180px;
-
     bottom: 100px;
 
     width: 90px;
-
     height: 145px;
 
     background: #743f24;
-
-    border:
-        8px solid #392218;
+    border: 8px solid #392218;
 
     z-index: 20;
-
-    box-shadow:
-        7px 7px 0 #302344;
+    box-shadow: 7px 7px 0 #302344;
 }
 
 .door-window {
     position: absolute;
+    top: 20px;
+    left: 17px;
 
     width: 40px;
     height: 40px;
 
-    top: 20px;
-    left: 17px;
-
     background: #83c9df;
-
-    border:
-        5px solid #392218;
+    border: 5px solid #392218;
 }
 
 .door-handle {
     position: absolute;
+    top: 78px;
+    right: 12px;
 
     width: 12px;
     height: 12px;
 
-    right: 12px;
-    top: 78px;
-
     background: #e5bd3f;
-
-    border:
-        3px solid #392218;
-
+    border: 3px solid #392218;
     border-radius: 50%;
-}
-
-#teacher {
-    position: absolute;
-
-    left: 3230px;
-    bottom: 100px;
-
-    width: 110px;
-    height: 170px;
-
-    z-index: 25;
-}
-
-#teacher img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-    object-position: bottom center;
-
-    image-rendering: pixelated;
 }
 
 .final-sign {
     position: absolute;
-
     left: 3070px;
-
     bottom: 290px;
 
-    padding:
-        12px 20px;
+    padding: 12px 20px;
 
     background: #fff1bd;
-
     color: #302344;
 
-    border:
-        5px solid #302344;
-
+    border: 5px solid #302344;
     font-weight: bold;
 
     z-index: 20;
-
-    box-shadow:
-        5px 5px 0 #302344;
+    box-shadow: 5px 5px 0 #302344;
 }
 
-#questionModal {
+#questionModal,
+#messageModal {
     position: fixed;
-
     inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
 
     width: 100%;
     height: 100%;
 
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
     padding: 20px;
 
     background-color: rgba(29, 24, 51, 0.75);
-
     z-index: 4000;
 }
 
-#messageModal.show {
-    display: flex;
-}
-
 #questionModal.show,
-
 #messageModal.show {
     display: flex;
 }
@@ -742,56 +669,42 @@ button {
 .question-box,
 .message-box {
     width: 90%;
-
     max-width: 650px;
-
     max-height: 90vh;
 
     overflow-y: auto;
-
     padding: 30px;
 
     text-align: center;
 
     background: #fff1bd;
+    border: 8px solid #302344;
 
-    border:
-        8px solid #302344;
-
-    box-shadow:
-        10px 10px 0 #302344;
+    box-shadow: 10px 10px 0 #302344;
 }
 
 .brain-icon {
     width: 55px;
-
     height: 45px;
-
-    margin:
-        0 auto 15px;
+    margin: 0 auto 15px;
 
     background: #db79a2;
-
-    border:
-        5px solid #542542;
-
+    border: 5px solid #542542;
     border-radius: 50%;
 }
 
 .question-box h2,
 .message-box h2 {
-    color: #d84455;
-
-    font-size: 25px;
-
     margin-bottom: 20px;
+    color: #d84455;
+    font-size: 25px;
 }
 
 #questionText {
+    margin-bottom: 20px;
     color: #302344;
     font-size: 22px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 #questionModal button {
@@ -802,7 +715,6 @@ button {
 
 #answers {
     display: grid;
-
     gap: 12px;
 }
 
@@ -810,58 +722,43 @@ button {
     padding: 14px;
 
     color: #302344;
-
     background: #83d78a;
 
-    border:
-        4px solid #302344;
+    border: 4px solid #302344;
 
     font-size: 18px;
-
     font-weight: bold;
 
-    transition:
-
-        background 0.15s,
-        transform 0.1s;
+    transition: background 0.15s, transform 0.1s;
 }
 
 .answer:hover {
     background: #f5ca45;
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .answer:disabled {
     cursor: default;
-
     opacity: 0.7;
-
     transform: none;
 }
 
 #feedback {
     min-height: 25px;
-
     margin-top: 15px;
-
     font-weight: bold;
 }
 
 #messageText {
-    color: #302344;
-
-    font-size: 18px;
-
-    line-height: 1.5;
-
     margin-bottom: 20px;
+
+    color: #302344;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 #victory {
     justify-content: center;
-
     align-items: center;
 
     overflow-y: auto;
@@ -877,72 +774,36 @@ button {
 
 .victory-box {
     width: 90%;
-
     max-width: 650px;
-
     padding: 30px;
 
     text-align: center;
 
     background: #fff1bd;
+    border: 8px solid #302344;
 
-    border:
-        8px solid #302344;
-
-    box-shadow:
-        10px 10px 0 #302344;
+    box-shadow: 10px 10px 0 #302344;
 }
 
 .victory-box h1 {
     color: #d84455;
-
     font-size: 40px;
 
-    text-shadow:
-        3px 3px 0 #f5ca45;
+    text-shadow: 3px 3px 0 #f5ca45;
 }
 
 .victory-box h2 {
+    margin: 15px 0;
     color: #302344;
-
-    margin:
-        15px 0;
 }
 
 .victory-box p {
-    color: #302344;
-
     margin: 10px;
-}
-
-.teacher-big {
-    position: relative;
-
-    width: 100px;
-
-    height: 150px;
-
-    margin:
-        20px auto;
-}
-
-.teacher-big .teacher-hair {
-    left: 18px;
-}
-
-.teacher-big .teacher-head {
-    left: 25px;
-}
-
-.teacher-big .teacher-body {
-    left: 15px;
-
-    top: 78px;
+    color: #302344;
 }
 
 .final-score {
     margin: 20px;
-
     font-size: 18px;
 }
 
@@ -954,15 +815,12 @@ button {
     display: inline-block;
 
     width: 15px;
-
     height: 15px;
-
     margin: 5px;
 
     background: #e94d52;
 
-    animation:
-        confetti 1s infinite alternate;
+    animation: confetti 1s infinite alternate;
 }
 
 .confetti span:nth-child(2) {
@@ -982,43 +840,44 @@ button {
 }
 
 @keyframes confetti {
-
     from {
-        transform:
-            translateY(0)
-            rotate(0);
+        transform: translateY(0) rotate(0);
     }
 
     to {
-        transform:
-            translateY(12px)
-            rotate(20deg);
+        transform: translateY(12px) rotate(20deg);
     }
 }
 
 #mobileControls button:active {
-    transform:
-        translate(3px, 3px);
-
-    box-shadow:
-        2px 2px 0 #302344;
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #302344;
 }
 
 @media (max-width: 700px) {
-
     #mobileControls {
         display: flex;
     }
 
     #hud {
         height: 55px;
+        min-height: 55px;
+        gap: 5px;
+        padding: 0 5px;
+        font-size: 10px;
+    }
 
-        font-size: 11px;
+    .hud-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        font-size: 10px;
     }
 
     #game {
-        height:
-            calc(100vh - 55px);
+        height: calc(100vh - 55px);
+        height: calc(100dvh - 55px);
     }
 
     .menu-box,
@@ -1027,15 +886,27 @@ button {
     .message-box,
     .victory-box {
         padding: 20px;
-
         border-width: 6px;
+        box-shadow: 6px 6px 0 #302344;
+    }
 
-        box-shadow:
-            6px 6px 0 #302344;
+    .menu-box {
+        width: 95%;
+        max-width: 440px;
     }
 
     .menu-box h1 {
         font-size: 32px;
+    }
+
+    .menu-character {
+        width: 100px;
+        height: 100px;
+    }
+
+    .main-button,
+    .secondary-button {
+        width: 100%;
     }
 
     .subtitle {
@@ -1044,12 +915,17 @@ button {
 
     .instruction-list p {
         font-size: 13px;
-
         margin-bottom: 9px;
     }
 
     .panel h2 {
         font-size: 25px;
+    }
+
+    .question-box,
+    .message-box {
+        width: 95%;
+        max-width: 450px;
     }
 
     .question-box h2,
@@ -1063,7 +939,6 @@ button {
 
     .answer {
         padding: 11px;
-
         font-size: 16px;
     }
 
@@ -1079,24 +954,89 @@ button {
         font-size: 16px;
     }
 
+    #player {
+        width: 100px;
+        height: 100px;
+    }
+
+    .image-button {
+        width: 180px;
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 900px),
+       screen and (orientation: landscape) and (max-height: 500px) {
+
+    #mobileControls {
+        display: flex !important;
+        position: fixed;
+
+        bottom: max(15px, env(safe-area-inset-bottom));
+        left: 0;
+
+        width: 100%;
+
+        justify-content: space-around;
+        align-items: center;
+
+        padding: 0 15px;
+
+        z-index: 99999;
+        pointer-events: none;
+    }
+
     #mobileControls button {
-        width: 65px;
+        display: block;
 
-        height: 55px;
+        width: 75px;
+        height: 70px;
 
-        font-size: 18px;
+        background-color: #fff1bd;
+
+        border: 4px solid #302344;
+        border-radius: 10px;
+
+        background-size: 85%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        box-shadow: 4px 4px 0 #302344;
+
+        font-size: 0;
+        color: transparent;
+
+        pointer-events: auto;
+        touch-action: none;
+    }
+
+    #leftControl {
+        background-image: url("SETA2.PNG");
+    }
+
+    #rightControl {
+        background-image: url("SETA1.PNG");
+    }
+
+    #jumpControl {
+        background-image: url("PULE.PNG");
+    }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    #mobileControls button {
+        width: 55px;
+        height: 50px;
     }
 }
 
 @media (max-height: 600px) {
-
     .menu-box,
     .panel,
     .question-box,
     .message-box,
     .victory-box {
         max-height: 90vh;
-
         overflow-y: auto;
     }
 
@@ -1106,242 +1046,11 @@ button {
 
     .instruction-list p {
         margin-bottom: 6px;
-
         line-height: 1.3;
-    }
-}   
-
-button:focus-visible {
-    outline:
-        4px solid #ffffff;
-
-    outline-offset:
-        3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-
-        animation-iteration-count: 1 !important;
-
-        transition-duration: 0.01ms !important;
-    }
-}
-
-.image-button {
-    display: block;
-
-    width: 200px;
-    height: 70px;
-
-    max-width: 100%;
-
-    margin: 15px auto;
-    padding: 0;
-
-    background: transparent;
-
-    border: none;
-
-    overflow: hidden;
-
-    cursor: pointer;
-
-    transition: transform 0.2s, filter 0.2s;
-}
-
-.image-button img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    image-rendering: pixelated;
-}
-
-.image-button:hover {
-    transform: scale(1.04);
-    filter: brightness(1.05);
-}
-
-.image-button:active {
-    transform: scale(0.96);
-}
-
-.image-button:focus-visible {
-    outline: 4px solid #6FA8D6;
-    outline-offset: 4px;
-}
-
-.image-button {
-    display: block;
-
-    width: 200px;
-    height: 70px;
-
-    max-width: 100%;
-
-    margin: 15px auto;
-    padding: 0;
-
-    background: transparent;
-
-    border: none;
-
-    overflow: hidden;
-
-    cursor: pointer;
-
-    transition: transform 0.2s, filter 0.2s;
-}
-
-.image-button img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    image-rendering: pixelated;
-}
-
-.image-button:hover {
-    transform: scale(1.04);
-    filter: brightness(1.05);
-}
-
-.image-button:active {
-    transform: scale(0.96);
-}
-
-.image-button:focus-visible {
-    outline: 4px solid #6FA8D6;
-    outline-offset: 4px;
-}
-
-@media (max-width: 600px) {
-
-    .image-button {
-        width: 180px;
-        height: 60px;
-    }
-
-    #hud {
-        gap: 5px;
-
-        padding: 0 5px;
-
-        font-size: 11px;
-    }
-
-    .hud-item {
-        gap: 3px;
-    }
-
-    .question-box,
-    .message-box {
-        width: 95%;
-
-        max-width: 450px;
-
-        padding: 20px;
-    }
-
-}
-
-#questionModal.show,
-#messageModal.show {
-    display: flex;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    overscroll-behavior: none;
-}
-
-.screen {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-}
-
-#gameScreen {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-}
-
-#game {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 60px);
-    height: calc(100dvh - 60px);
-    min-height: 0;
-    overflow: hidden;
-    touch-action: none;
-}
-
-@media (max-width: 700px) {
-
-    #game {
-        height: calc(100vh - 55px);
-        height: calc(100dvh - 55px);
-    }
-
-    #hud {
-        height: 55px;
-        min-height: 55px;
-        padding: 0 5px;
-        font-size: 10px;
-    }
-
-    .hud-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-        font-size: 10px;
-    }
-
-    #mobileControls {
-        display: flex;
-        bottom: max(12px, env(safe-area-inset-bottom));
-        justify-content: space-around;
-        padding: 0 12px;
-    }
-
-    #mobileControls button {
-        width: 62px;
-        height: 58px;
-        font-size: 16px;
-    }
-
-    .menu-box {
-        width: 95%;
-        max-width: 440px;
-    }
-
-    .panel,
-    .question-box,
-    .message-box,
-    .victory-box {
-        width: 94%;
-        max-height: 90dvh;
-        overflow-y: auto;
     }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
-
     #hud {
         height: 40px;
         min-height: 40px;
@@ -1386,82 +1095,12 @@ body {
     }
 }
 
-@media (max-width: 700px) {
-    #player {
-        width: 90px;
-        height: 90px;
-    }
-}
-
-.teacher-big {
-    position: relative;
-
-    width: 100px;
-    height: 150px;
-
-    margin: 20px auto;
-}
-
-.teacher-big img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    image-rendering: pixelated;
-}
-
-@media screen and (max-width: 900px),
-       screen and (orientation: landscape) and (max-height: 500px) {
-
-    #mobileControls {
-        display: flex !important;
-        position: fixed;
-        bottom: max(15px, env(safe-area-inset-bottom));
-        left: 0;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0 15px;
-        z-index: 99999;
-        pointer-events: none;
-    }
-
-    #mobileControls button {
-        display: block;
-        width: 75px;
-        height: 70px;
-        background-color: #fff1bd;
-        border: 4px solid #302344;
-        border-radius: 10px;
-        background-size: 85%;
-        background-repeat: no-repeat;
-        background-position: center;
-        box-shadow: 4px 4px 0 #302344;
-        font-size: 0;
-        color: transparent;
-        pointer-events: auto;
-        touch-action: none;
-    }
-
-    #leftControl {
-        background-image: url("SETA2.PNG");
-    }
-
-    #rightControl {
-        background-image: url("SETA1.PNG");
-    }
-
-    #jumpControl {
-        background-image: url("PULE.PNG");
-    }
-}
-
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    #mobileControls button {
-        width: 55px;
-        height: 50px;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
