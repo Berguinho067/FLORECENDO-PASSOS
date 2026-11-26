@@ -21,25 +21,14 @@
     const answers = document.getElementById("answers");
     const feedback = document.getElementById("feedback");
     const audioQuestionButton = document.getElementById("audioQuestionButton");
+    const audioPergunta = document.getElementById("audioPergunta");
 
-if (audioQuestionButton && questionText) {
-
-    audioQuestionButton.addEventListener("click", function () {
-
-        speechSynthesis.cancel();
-
-        const fala = new SpeechSynthesisUtterance(
-            questionText.textContent
-        );
-
-        fala.lang = "pt-BR";
-        fala.rate = 0.85;
-        fala.volume = 1;
-
-        speechSynthesis.speak(fala);
-    });
-
-}
+    if (audioQuestionButton && audioPergunta) {
+        audioQuestionButton.addEventListener("click", function () {
+            audioPergunta.currentTime = 0;
+            audioPergunta.play();
+        });
+    }
 
     const messageModal = document.getElementById("messageModal");
     const messageTitle = document.getElementById("messageTitle");
@@ -112,45 +101,33 @@ if (audioQuestionButton && questionText) {
         {
             question:
                 "Ana tem 3 bolas. Ela ganha mais 2 bolas. Quantas bolas Ana tem agora?",
-            options: [
-                "4",
-                "5",
-                "6"
-            ],
-            correct: 1
+            options: ["4", "5", "6"],
+            correct: 1,
+            audio: "audios/audio1.mp3"
         },
-
+    
         {
             question:
                 "Qual número vem depois do número 7?",
-            options: [
-                "6",
-                "8",
-                "9"
-            ],
-            correct: 1
+            options: ["6", "8", "9"],
+            correct: 1,
+            audio: "audios/audio2.mp3"
         },
-
+    
         {
             question:
                 "Pedro tem 5 carrinhos. Ele dá 2 para seu amigo. Quantos carrinhos ficam com Pedro?",
-            options: [
-                "2",
-                "3",
-                "4"
-            ],
-            correct: 1
+            options: ["2", "3", "4"],
+            correct: 1,
+            audio: "audios/audio3.mp3"
         },
-
+    
         {
             question:
                 "Complete a sequência: 2, 4, 6, 8, ?",
-            options: [
-                "9",
-                "10",
-                "12"
-            ],
-            correct: 1
+            options: ["9", "10", "12"],
+            correct: 1,
+            audio: "audios/audio4.mp3"
         }
     ];
 
@@ -1021,8 +998,13 @@ function checkEnemies() {
         const challenge =
             challenges[index];
 
-        questionText.textContent =
-            challenge.question;
+            audioPergunta.src = challenge.audio;
+            audioPergunta.load();
+            audioPergunta.pause();
+            audioPergunta.currentTime = 0;
+
+            questionText.textContent =
+             challenge.question;
 
         answers.innerHTML =
             "";
