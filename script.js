@@ -24,9 +24,23 @@
     const audioPergunta = document.getElementById("audioPergunta");
 
     if (audioQuestionButton && audioPergunta) {
+
         audioQuestionButton.addEventListener("click", function () {
+    
             audioPergunta.currentTime = 0;
-            audioPergunta.play();
+    
+            audioPergunta.play()
+                .then(function () {
+                    console.log("Áudio começou a tocar!");
+                })
+                .catch(function (error) {
+                    console.log("Erro ao tocar áudio:", error);
+                });
+    
+        });
+    
+        audioPergunta.addEventListener("error", function () {
+            console.log("Erro ao carregar o arquivo de áudio.");
         });
     }
 
