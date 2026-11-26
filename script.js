@@ -120,7 +120,7 @@
                 "Ana tem 3 bolas. Ela ganha mais 2 bolas. Quantas bolas Ana tem agora?",
             options: ["4", "5", "6"],
             correct: 1,
-            audio: "audios/audio1.mp3"
+            audio: "Áudios/audio1.mp3"
         },
     
         {
@@ -128,7 +128,7 @@
                 "Qual número vem depois do número 7?",
             options: ["6", "8", "9"],
             correct: 1,
-            audio: "audios/audio2.mp3"
+            audio: "Áudios/audio2.mp3"
         },
     
         {
@@ -136,7 +136,7 @@
                 "Pedro tem 5 carrinhos. Ele dá 2 para seu amigo. Quantos carrinhos ficam com Pedro?",
             options: ["2", "3", "4"],
             correct: 1,
-            audio: "audios/audio3.mp3"
+            audio: "Áudios/audio3.mp3"
         },
     
         {
@@ -144,7 +144,7 @@
                 "Complete a sequência: 2, 4, 6, 8, ?",
             options: ["9", "10", "12"],
             correct: 1,
-            audio: "audios/audio4.mp3"
+            audio: "Áudios/audio4.mp3"
         }
     ];
 
