@@ -26,6 +26,7 @@
     if (audioQuestionButton && audioPergunta) {
 
         audioQuestionButton.addEventListener("click", function () {
+            console.log("BOTÃO DE ÁUDIO FOI CLICADO!");
     
             audioPergunta.pause();
             audioPergunta.currentTime = 0;
