@@ -27,6 +27,7 @@
 
         audioQuestionButton.addEventListener("click", function () {
     
+            audioPergunta.pause();
             audioPergunta.currentTime = 0;
     
             audioPergunta.play()
@@ -34,14 +35,15 @@
                     console.log("Áudio começou a tocar!");
                 })
                 .catch(function (error) {
-                    console.log("Erro ao tocar áudio:", error);
+                    console.log("Não foi possível tocar o áudio:", error);
                 });
     
         });
     
         audioPergunta.addEventListener("error", function () {
-            console.log("Erro ao carregar o arquivo de áudio.");
+            console.log("Erro ao carregar o áudio:", audioPergunta.error);
         });
+    
     }
 
     const messageModal = document.getElementById("messageModal");
@@ -1012,10 +1014,13 @@ function checkEnemies() {
         const challenge =
             challenges[index];
 
-            audioPergunta.src = challenge.audio;
-            audioPergunta.load();
             audioPergunta.pause();
+
             audioPergunta.currentTime = 0;
+
+            audioPergunta.src = challenge.audio;
+
+            audioPergunta.load();
 
             questionText.textContent =
              challenge.question;
