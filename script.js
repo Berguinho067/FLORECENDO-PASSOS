@@ -2,7 +2,7 @@
     const instructions = document.getElementById("instructions");
     const gameScreen = document.getElementById("gameScreen");
     const victory = document.getElementById("victory");
-
+    
     const playButton = document.getElementById("playButton");
     const instructionsButton = document.getElementById("instructionsButton");
     const backButton = document.getElementById("backButton");
@@ -20,6 +20,26 @@
     const questionText = document.getElementById("questionText");
     const answers = document.getElementById("answers");
     const feedback = document.getElementById("feedback");
+    const audioQuestionButton = document.getElementById("audioQuestionButton");
+
+if (audioQuestionButton && questionText) {
+
+    audioQuestionButton.addEventListener("click", function () {
+
+        speechSynthesis.cancel();
+
+        const fala = new SpeechSynthesisUtterance(
+            questionText.textContent
+        );
+
+        fala.lang = "pt-BR";
+        fala.rate = 0.85;
+        fala.volume = 1;
+
+        speechSynthesis.speak(fala);
+    });
+
+}
 
     const messageModal = document.getElementById("messageModal");
     const messageTitle = document.getElementById("messageTitle");
